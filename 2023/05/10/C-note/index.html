@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>C++ note (1) | Sleep With Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="new 和 delete 、动态创建变量&#x2F;数组、内存泄漏、 &#x3D; default new 和 delete 关键字 new 总结 delete 总结：   动态创建变量&#x2F;数组 动态创建一个整型变量 动态创建一个整型数组 动态创建一个 string 数组 动态创建一个二维整型数组   内存泄漏 显式默认化函数定义 &#x3D; default    new 和 delete 、动态创建变量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ note (1)">
+<meta property="og:url" content="http://example.com/2023/05/10/C-note/index.html">
+<meta property="og:site_name" content="Sleep With Me">
+<meta property="og:description" content="new 和 delete 、动态创建变量&#x2F;数组、内存泄漏、 &#x3D; default new 和 delete 关键字 new 总结 delete 总结：   动态创建变量&#x2F;数组 动态创建一个整型变量 动态创建一个整型数组 动态创建一个 string 数组 动态创建一个二维整型数组   内存泄漏 显式默认化函数定义 &#x3D; default    new 和 delete 、动态创建变量">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-05-10T14:46:30.000Z">
+<meta property="article:modified_time" content="2023-05-27T14:28:57.086Z">
+<meta property="article:author" content="Eiaton">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Sleep With Me" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Sleep With Me</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">If you want, study with me, also.</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-C-note" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/05/10/C-note/" class="article-date">
+  <time class="dt-published" datetime="2023-05-10T14:46:30.000Z" itemprop="datePublished">2023-05-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      C++ note (1)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><a href="#new-%E5%92%8C-delete-%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F--default"><code>new</code> 和 <code>delete</code> 、动态创建变量&#x2F;数组、内存泄漏、 <code>= default</code></a><ul>
+<li><a href="#new-%E5%92%8C-delete-%E5%85%B3%E9%94%AE%E5%AD%97"><code>new</code> 和 <code>delete</code> 关键字</a><ul>
+<li><a href="#new-%E6%80%BB%E7%BB%93"><code>new</code> 总结</a></li>
+<li><a href="#delete-%E6%80%BB%E7%BB%93"><code>delete</code> 总结：</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F%E6%95%B0%E7%BB%84">动态创建变量&#x2F;数组</a><ul>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B4%E5%9E%8B%E5%8F%98%E9%87%8F">动态创建一个整型变量</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%95%B4%E5%9E%8B%E6%95%B0%E7%BB%84">动态创建一个整型数组</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-string-%E6%95%B0%E7%BB%84">动态创建一个 <code>string</code> 数组</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BA%8C%E7%BB%B4%E6%95%B4%E5%9E%8B%E6%95%B0%E7%BB%84">动态创建一个二维整型数组</a></li>
+</ul>
+</li>
+<li><a href="#%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F">内存泄漏</a></li>
+<li><a href="#%E6%98%BE%E5%BC%8F%E9%BB%98%E8%AE%A4%E5%8C%96%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89--default">显式默认化函数定义 <code>= default</code></a></li>
+</ul>
+</li>
+</ul>
+<h1 id="new-和-delete-、动态创建变量-x2F-数组、内存泄漏、-default"><a href="#new-和-delete-、动态创建变量-x2F-数组、内存泄漏、-default" class="headerlink" title="new 和 delete 、动态创建变量&#x2F;数组、内存泄漏、 = default"></a><code>new</code> 和 <code>delete</code> 、动态创建变量&#x2F;数组、内存泄漏、 <code>= default</code></h1><h2 id="new-和-delete-关键字"><a href="#new-和-delete-关键字" class="headerlink" title="new 和 delete 关键字"></a><code>new</code> 和 <code>delete</code> 关键字</h2><h3 id="new-总结"><a href="#new-总结" class="headerlink" title="new 总结"></a><code>new</code> 总结</h3><ol>
+<li><code>ptr_type* ptr_name = new ptr_type; // 动态创建一个对象</code></li>
+<li><code>ptr_type* ptr_name = new ptr_name;（初始化参数） ; // 动态创建一个对象，可不初始化</code></li>
+<li><code>ptr_type* ptr_name = new ptr_type[arr_length] &#123;Init_list&#125;; // 用于动态分配数组，可没有初始化列表（string 类型就一定要有）</code></li>
+</ol>
+<ul>
+<li>类型可为基本类型，也可为类类型(<code>class type</code>)。<ul>
+<li>若为类类型，则初始化参数相当于将实际参数传递给该类的构造函数</li>
+</ul>
+</li>
+<li><code>new</code> 运算返回一个该类型指针（不是 **<code>void*</code>**），指向分配到的内存空间</li>
+<li>若内存分配失败，<strong>抛出异常结束程序，而不是返回 <code>NULL</code></strong></li>
+</ul>
+<h3 id="delete-总结："><a href="#delete-总结：" class="headerlink" title="delete 总结："></a><code>delete</code> 总结：</h3><ol>
+<li><code>delete 变量名;</code> &#x2F;&#x2F;基本用法</li>
+<li><code>delete []变量名;</code> &#x2F;&#x2F;用于释放数组</li>
+</ol>
+<ul>
+<li><p>如果动态分配了一个数组，但是却用<code>delete p</code>的方式释放，没有用<code>[]</code>，则</p>
+<ul>
+<li>编译时没有问题，运行时也一般不会发生错误，</li>
+<li>但实际上会导致动态分配的数组没有被完全释放。</li>
+</ul>
+</li>
+<li><p><code>delete</code> 释放的是指针所指对象占据的内存。</p>
+<ul>
+<li><code>delete</code> 对象指针，会调用该对象的析构函数。（<code>[]</code> 将令其中所有元素都调用各自析构函数）</li>
+<li>用delete释放空间后，指针的值仍是原来指向的地址，但指针已无效（重复释放将出错，即非法指针访问）。</li>
+</ul>
+</li>
+<li><p><code>delete</code> 本身会自动检查对象是否为空。如果为空,就不做操作,因此 <code>delete</code> 空指针<strong>不需要</strong>特判。</p>
+</li>
+<li><p>为防止重复删除出错，最好删除后就把指针赋为空。</p>
+</li>
+</ul>
+<h2 id="动态创建变量-x2F-数组"><a href="#动态创建变量-x2F-数组" class="headerlink" title="动态创建变量&#x2F;数组"></a>动态创建变量&#x2F;数组</h2><h3 id="动态创建一个整型变量"><a href="#动态创建一个整型变量" class="headerlink" title="动态创建一个整型变量"></a>动态创建一个整型变量</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p = <span class="keyword">new</span> <span class="type">int</span>;</span><br><span class="line">cin &gt;&gt; *p;</span><br><span class="line"><span class="keyword">delete</span> p;</span><br></pre></td></tr></table></figure>
+<h3 id="动态创建一个整型数组"><a href="#动态创建一个整型数组" class="headerlink" title="动态创建一个整型数组"></a>动态创建一个整型数组</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p;</span><br><span class="line">p = <span class="keyword">new</span> <span class="type">int</span>[length] &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="comment">// 若没有初始化列表，则不确定值；若初始化列表长度不够，则自动补齐`0`</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">  cout &lt;&lt; p[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> [] p;</span><br></pre></td></tr></table></figure>
+<h3 id="动态创建一个-string-数组"><a href="#动态创建一个-string-数组" class="headerlink" title="动态创建一个 string 数组"></a>动态创建一个 <code>string</code> 数组</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = <span class="number">3</span>;</span><br><span class="line">string *p = <span class="keyword">new</span> string[n] &#123;</span><br><span class="line">  <span class="built_in">string</span>(<span class="number">5</span>, <span class="string">&#x27;a&#x27;</span>), <span class="built_in">string</span>(<span class="number">4</span>, <span class="string">&#x27;b&#x27;</span>), <span class="built_in">string</span>(<span class="number">3</span>, <span class="string">&#x27;c&#x27;</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 由于将决定分配多少长度，`string`创建时必须初始化</span></span><br><span class="line">p[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">&#x27;f&#x27;</span>;</span><br><span class="line"><span class="comment">// 初始化后可以更改</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">  cout &lt;&lt; p[i] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> [] p;</span><br></pre></td></tr></table></figure>
+<h3 id="动态创建一个二维整型数组"><a href="#动态创建一个二维整型数组" class="headerlink" title="动态创建一个二维整型数组"></a>动态创建一个二维整型数组</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> row;</span><br><span class="line"><span class="type">int</span> col;</span><br><span class="line">cin &gt;&gt; row &gt;&gt; col;</span><br><span class="line"><span class="type">int</span> **a;</span><br><span class="line">a = <span class="keyword">new</span> <span class="type">int</span> *[row];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">  a[i] = <span class="keyword">new</span> <span class="type">int</span> [col];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; col; j++) &#123;</span><br><span class="line">    cin &gt;&gt; a[row][col];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">  <span class="keyword">delete</span> [] a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> [] a;</span><br></pre></td></tr></table></figure>
+<h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p>是指 <code>new</code> 的指针丢失导致占用内存无法释放</p>
+<ol>
+<li>指针赋值时<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">7</span>);</span><br><span class="line">p = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="comment">// 内存泄漏</span></span><br></pre></td></tr></table></figure></li>
+<li>指针离开作用域时<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> <span class="type">int</span> *p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">7</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 内存泄露</span></span><br></pre></td></tr></table></figure></li>
+<li>异常导致程序或函数终止<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> <span class="type">int</span> *p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">7</span>);</span><br><span class="line"> <span class="built_in">g</span>();</span><br><span class="line"> <span class="keyword">delete</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 若 g() 抛出异常则内存泄漏</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="显式默认化函数定义-default"><a href="#显式默认化函数定义-default" class="headerlink" title="显式默认化函数定义 = default"></a>显式默认化函数定义 <code>= default</code></h2><p><strong>用于恢复函数的默认定义</strong></p>
+<p>当我们声明有参构造函数时，编译器就不会创建默认构造函数。为了使编译器创建<br>该默认构造函数，可以在函数声明后指定 <code>= default</code></p>
+<ul>
+<li>若以 <code>= default</code> 声明，则该函数不能写实现</li>
+<li>特殊成员函数包括：<ul>
+<li>默认构造函数</li>
+<li>析构函数</li>
+<li>复制构造函数等</li>
+</ul>
+</li>
+</ul>
+<p>例如：（有参时用前面的，无参时用默认，这时不能写A（）的实现）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">A</span>(<span class="type">int</span> x) &#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;constructed&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">A</span>() = <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/05/10/C-note/" data-id="cli6998e700064czgfyb7blod" data-title="C++ note (1)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/05/10/C-note-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          C++ note (2)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/05/04/How-to-start-a-new-post/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">How to start a new post</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Structure/" rel="tag">Data Structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HEXO/" rel="tag">HEXO</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/Data-Structure/" style="font-size: 10px;">Data Structure</a> <a href="/tags/HEXO/" style="font-size: 15px;">HEXO</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">May 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/05/27/How-to-use-tags-plugin/">How to use tags plugin</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/27/C-note-4/">C++ note (4)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/27/C-note-3/">C++ note (3)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/10/C-note-2/">C++ note (2)</a>
+          </li>
+        
+          <li>
+            <a href="/2023/05/10/C-note/">C++ note (1)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Eiaton<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
