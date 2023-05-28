@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-28 20:57:49</time>
+          <time>2023-05-28 21:25:20</time>
           <span class="text-gray-400">·</span>
-          <span>4 min</span>
+          <span>5 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.3k words</span>
+          <span>1.4k words</span>
         </section>
       </div>
     </div>
@@ -315,13 +315,21 @@
 <li>对象布局与 <code>C</code> 结构内存布局一致，使得内存中对象便于与其他语言程序库兼容</li>
 <li>高效率，高性能</li>
 </ol>
-<h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><p>在定义语句中用同类型的对象初始化另一个对象</p>
+<h3 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>在定义语句中用同类型的对象初始化另一个对象</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假定 C 为已定义的类</span></span><br><span class="line">C obj1;	       <span class="comment">//调用 C 的（1）无参构造函数</span></span><br><span class="line"><span class="function">C <span class="title">obj1</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span>    <span class="comment">//调用 C 的有参（2）普通构造函数</span></span></span><br><span class="line"><span class="function"><span class="comment">//如无(1)(2)则调用默认构造函数</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/*调用 C 的（3）拷贝构造函数用对象obj1初始化对象obj2。</span></span></span><br><span class="line"><span class="comment"><span class="function">如果有为 C 类明确定义拷贝构造函数，将调用这个拷贝构造函数；</span></span></span><br><span class="line"><span class="comment"><span class="function">如果没有为 C 类定义拷贝构造函数，将调用默认拷贝构造函数。*/</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">C <span class="title">obj2</span><span class="params">(obja)</span></span>;    <span class="comment">//或</span></span><br><span class="line">C obj2 = obja ;  <span class="comment">//两者等价（注意：不是赋值运算）</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><ul>
+<li>用类类型（class type）本身作为参数</li>
+<li>该参数传递方式为<strong>按引用传递</strong>，<em>避免在函数调用过程中生成形参副本</em>。</li>
+<li>该形参声明为 <code>const</code>，<em>以确保在拷贝构造函数中不修改实参的值</em><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C::<span class="built_in">C</span>(<span class="type">const</span> C&amp; obj);</span><br></pre></td></tr></table></figure>
+例如：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">complex</span>(<span class="type">const</span> complex&amp; other);</span><br></pre></td></tr></table></figure>
+注：</li>
+</ul>
+<ol>
+<li>C::C(C&amp; obj) 不用 const 形式已过时。</li>
+<li>C::C(C&amp;&amp; obj) 形式称为移动构造函数（超纲）</li>
+<li></li>
+</ol>
+<h4 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h4>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
