@@ -27,7 +27,7 @@
 
 
 
-<title>How to use tags plugin | Sleep With Me</title>
+<title>How I solve the &#39;tag page is blank&#39; problem | Sleep With Me</title>
 
 
 
@@ -165,7 +165,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        How to use tags plugin
+        How I solve the 'tag page is blank' problem
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -242,39 +242,47 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        How to use tags plugin
+        How I solve the 'tag page is blank' problem
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-28 00:53:07</time>
+          <time>2023-05-28 20:07:37</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>305 words</span>
+          <span>217 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h1><p>标签插件不应该被包裹在 Markdown 语法中</p>
-<p>例如： <code>[](&#123;% post_path lorem-ipsum %&#125;)</code> 是不被支持的。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">name</span>](<span class="link">position/pic_name.type</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// on web</span><br><span class="line">&quot;pic&quot;</span><br><span class="line">pic_name</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>hexo的处理方式：</p>
+    <h1 id="创建tags页面时遇到的问题"><a href="#创建tags页面时遇到的问题" class="headerlink" title="创建tags页面时遇到的问题"></a>创建tags页面时遇到的问题</h1><h2 id="正常流程"><a href="#正常流程" class="headerlink" title="正常流程"></a>正常流程</h2><ol>
+<li><code>$ hexo new page &quot;tags&quot;</code></li>
+<li>编辑 <code>index.md</code> :  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">type: tags</span><br><span class="line">layout: tags</span><br></pre></td></tr></table></figure></li>
+<li>编辑主题配置文件 <code>nav</code>:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  Posts: /archives</span><br><span class="line">  Categories: </span><br><span class="line">  Tags: /tags         # 新增</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="我的tags界面会"><a href="#我的tags界面会" class="headerlink" title="我的tags界面会"></a>我的tags界面会</h2><ul>
+<li>依旧显示 <code>Cannot GET /tags/</code></li>
+<li>正常打开但内容空白</li>
+</ul>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
+<li>对于显示 <code>Cannot GET /tags/</code>，检查是否写了 <code>layout: tag</code> </li>
+<li>对于内容空白，查阅 <code>themes/maple/layout/tag.ejs</code>，发现作者写道：<blockquote>
+<hr>
+<p>this page will judge whether current page is ‘tag.’</p>
+<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tag/">http://localhost:4000/tag/</a>‘ return false.</p>
+<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tags/test/">http://localhost:4000/tags/test/</a>‘ return true.</p>
+<p>if you enter ‘tag’ page by click link will show all tags.</p>
+<p>otherwise if you enter ‘tags’ by click post header link will show the single tag of this post.</p>
+<h2 id="how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this"><a href="#how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this" class="headerlink" title="how to add a tag page:1. hexo new page “tag”2. cd source&#x2F;tag&#x2F;index.md3. add layout pattern like this:"></a>how to add a tag page:<br>1. hexo new page “tag”<br>2. cd source&#x2F;tag&#x2F;index.md<br>3. add layout pattern like this:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;---</span><br><span class="line">&gt;title: tag</span><br><span class="line">&gt;date: 2019-06-09 09:56:49</span><br><span class="line">&gt;tag: tag</span><br><span class="line">&gt;layout: tag</span><br><span class="line">&gt;---</span><br></pre></td></tr></table></figure></h2><p>方知要将 <code>tags</code> 改作 <code>tag</code></p>
 </blockquote>
-<h2 id="引用块（block-quote）-x2F-引用（quote）"><a href="#引用块（block-quote）-x2F-引用（quote）" class="headerlink" title="引用块（block quote）&#x2F;引用（quote）"></a>引用块（block quote）&#x2F;引用（quote）</h2><p>在文章中插入引言，可包含作者、来源和标题。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章的链接。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post<span class="emphasis">_path filename %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% post_</span>link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
-<p>在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。</p>
-<p>例如，在文章中使用 <code>&#123;% post_link how-to-bake-a-cake %&#125;</code> 时，只需有一个名为 how-to-bake-a-cake.md 的文章文件即可。即使这个文件位于站点文件夹的 source&#x2F;posts&#x2F;2015-02-my-family-holiday 目录下、或者文章的永久链接是 2018&#x2F;en&#x2F;how-to-bake-a-cake，都没有影响。</p>
-<p>默认链接文字是文章的标题，你也可以自定义要显示的文本。</p>
-<p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用escape选项，禁止对特殊字符进行转义。</p>
+</li>
+</ol>
+<p>对于category也是同理</p>
 
   </article>
   <!-- tag -->
@@ -291,16 +299,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2023/05/28/How-I-solve-the-tag-page-is-blank-problem/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          How I solve the 'tag page is blank' problem
-        </a>
-      
     </div>
     <div>
       
-        <a href="/2023/05/27/C-note-4/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          C++ note (4)
+        <a href="/2023/05/27/How-to-use-tags-plugin/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          How to use tags plugin
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
