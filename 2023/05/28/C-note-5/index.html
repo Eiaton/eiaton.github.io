@@ -27,7 +27,7 @@
 
 
 
-<title>How I solve the &#39;tag page is blank&#39; problem | Sleep With Me</title>
+<title>C++ note (5) | Sleep With Me</title>
 
 
 
@@ -165,7 +165,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        How I solve the 'tag page is blank' problem
+        C++ note (5)
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -242,47 +242,55 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        How I solve the 'tag page is blank' problem
+        C++ note (5)
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-28 20:08:54</time>
+          <time>2023-05-28 20:38:38</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>3 min</span>
           <span class="text-gray-400">·</span>
-          <span>215 words</span>
+          <span>792 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="创建tags页面时遇到的问题"><a href="#创建tags页面时遇到的问题" class="headerlink" title="创建tags页面时遇到的问题"></a>创建tags页面时遇到的问题</h1><h2 id="正常流程"><a href="#正常流程" class="headerlink" title="正常流程"></a>正常流程</h2><ol>
-<li><code>$ hexo new page &quot;tags&quot;</code></li>
-<li>编辑 <code>index.md</code> :  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">type: tags</span><br><span class="line">layout: tags</span><br></pre></td></tr></table></figure></li>
-<li>编辑主题配置文件 <code>nav</code>:  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  Posts: /archives</span><br><span class="line">  Categories: </span><br><span class="line">  Tags: /tags         # 新增</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="我的tags界面会"><a href="#我的tags界面会" class="headerlink" title="我的tags界面会"></a>我的tags界面会</h2><ul>
-<li>依旧显示 <code>Cannot GET /tags/</code></li>
-<li>正常打开但内容空白</li>
+    <h1 id="数据抽象类型-Ⅳ"><a href="#数据抽象类型-Ⅳ" class="headerlink" title="数据抽象类型 Ⅳ"></a>数据抽象类型 Ⅳ</h1><h2 id="对象成员初始化"><a href="#对象成员初始化" class="headerlink" title="对象成员初始化"></a>对象成员初始化</h2><h3 id="非静态数据成员初始化方法："><a href="#非静态数据成员初始化方法：" class="headerlink" title="非静态数据成员初始化方法："></a><em>非静态</em>数据成员初始化方法：</h3><ul>
+<li>在构造函数的成员 <strong>初始化器列表</strong> 中。（C++11）</li>
+<li>通过 <strong>默认成员初始化器</strong> ，它是成员声明中包含的 <strong>花括号 或 等号 初始化器</strong>。（C++11）</li>
+<li>构造函数体内进行赋值操作。（<strong>不要构造成员</strong>，除非特别熟悉 <code>new</code> 的用法）</li>
 </ul>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
-<li>对于显示 <code>Cannot GET /tags/</code>，检查是否写了 <code>layout: tag</code> </li>
-<li>对于内容空白，查阅 <code>themes/maple/layout/tag.ejs</code>，发现作者写道：<blockquote>
-<hr>
-<p>this page will judge whether current page is ‘tag.’</p>
-<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tag/">http://localhost:4000/tag/</a>‘ return false.</p>
-<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tags/test/">http://localhost:4000/tags/test/</a>‘ return true.</p>
-<p>if you enter ‘tag’ page by click link will show all tags.</p>
-<p>otherwise if you enter ‘tags’ by click post header link will show the single tag of this post.</p>
-<h2 id="how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this"><a href="#how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this" class="headerlink" title="how to add a tag page:1. hexo new page “tag”2. cd source&#x2F;tag&#x2F;index.md3. add layout pattern like this:"></a>how to add a tag page:<br>1. hexo new page “tag”<br>2. cd source&#x2F;tag&#x2F;index.md<br>3. add layout pattern like this:<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;title: tag</span><br><span class="line">&gt;date: 2019-06-09 09:56:49</span><br><span class="line">&gt;tag: tag</span><br><span class="line">&gt;layout: tag</span><br></pre></td></tr></table></figure></h2><p>方知要将 <code>tags</code> 改作 <code>tag</code></p>
+<h3 id="为什么需要初始化器列表和默认成员初始化器？"><a href="#为什么需要初始化器列表和默认成员初始化器？" class="headerlink" title="为什么需要初始化器列表和默认成员初始化器？"></a>为什么需要初始化器列表和默认成员初始化器？</h3><ul>
+<li>对象初始化分两个阶段：先<strong>按声明顺序初始化</strong>成员、然后执行构造函数函数体；</li>
+<li>对于复杂对象成员，如 <code>std::string name</code>，必须先构造才能在构造函数中赋值。这会导致构造函数必须先构造一个 <code>string</code> 中间变量才能赋值给 <code>name</code>；</li>
+<li>对于引用类型成员，const 成员需要预初始化；</li>
+<li>对象成员<strong>初始化需要参数</strong>。</li>
+</ul>
+<blockquote>
+<p>为了<em>提升初始化性能</em>，<code>C++</code> 引入了默认成员初始化器和初始化器列表</p>
 </blockquote>
-</li>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>与其他函数不同，构造函数除了有名字，参数列表和函数体之外，还可以有初始化器列表，初始化器列表以冒号开头，后跟一系列以逗号分隔的成员初始化器。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Date</span>(<span class="type">int</span> y, <span class="type">int</span> m) : <span class="built_in">year</span>(y), <span class="built_in">month</span>(m) &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><h4 id="必须使用初始化器列表的时候"><a href="#必须使用初始化器列表的时候" class="headerlink" title="必须使用初始化器列表的时候"></a>必须使用初始化器列表的时候</h4><p>除了性能问题之外，有些时候初始化器列表是不可或缺的.以下几种情况时必须使用初始化器列表：</p>
+<ol>
+<li><strong>常量成员</strong>，因为常量只能初始化不能赋值，所以必须放在初始化器列表里面</li>
+<li>引用类型，<strong>引用必须在定义的时候初始化</strong>，<strong>并且不能重新赋值</strong>，所以也要使用初始化器</li>
+<li><strong>没有默认构造函数的类类型（class type）</strong>，因为使用初始化器列表<em>可以不必调用无参构造函数</em>来初始化，而是直接用其他构造函数初始化</li>
 </ol>
-<p>对于 <code>category</code> 也是同理</p>
+<h4 id="成员变量声明的顺序"><a href="#成员变量声明的顺序" class="headerlink" title="成员变量声明的顺序"></a>成员变量声明的顺序</h4><p>成员是按照他们<em>在类中声明的顺序进行初始化的</em>，而不是按照他们在初始化器列表出现的顺序初始化的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">foo</span>(<span class="type">int</span> x) : <span class="built_in">i</span>(x), <span class="built_in">j</span>(i) &#123;&#125;</span><br><span class="line"><span class="comment">// 先初始化i，后初始化j</span></span><br></pre></td></tr></table></figure>
+<p>一个好的习惯是，按照成员声明的顺序进行初始化</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*member initialization*/</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="type">int</span> n;</span><br><span class="line">  <span class="comment">// 非静态数据成员</span></span><br><span class="line">  <span class="type">int</span>&amp; r = n;</span><br><span class="line">  <span class="comment">// 引用类型的非静态数据成员; =默认构造</span></span><br><span class="line">  <span class="type">int</span> a[<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line">  <span class="comment">// 带默认成员初始化器的非静态数据成员（C++11）</span></span><br><span class="line">  string s&#123;<span class="string">&#x27;H&#x27;</span>,<span class="string">&#x27;C&#x27;</span>&#125;;</span><br><span class="line">  <span class="comment">// 带默认成员初始化器</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">nestedS</span>  &#123;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">nestedS</span>(std::string s = <span class="string">&quot;hello&quot;</span>) : <span class="built_in">s</span>(s) &#123;&#125;;</span><br><span class="line">  &#125; d5;</span><br><span class="line">  <span class="comment">// 具有嵌套类型的非静态数据成员</span></span><br><span class="line"> </span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> bit : <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// 2 位的位域, const初始化</span></span><br><span class="line">  </span><br><span class="line">  <span class="built_in">S</span>() : <span class="built_in">n</span>(<span class="number">7</span>), <span class="built_in">bit</span>(<span class="number">3</span>) &#123;&#125;</span><br><span class="line">  <span class="comment">// &quot; : n(7), bit(3)&quot; 是初始化器列表; &quot;&#123;&#125;&quot; 是函数体</span></span><br><span class="line">  <span class="built_in">S</span>(<span class="type">int</span> x) : n&#123;x&#125;, <span class="built_in">bit</span>(<span class="number">3</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  S s;      <span class="comment">// 调用 S::S()</span></span><br><span class="line">  <span class="function">S <span class="title">s2</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">// 调用 S::S(int)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
   </article>
   <!-- tag -->
@@ -290,7 +298,7 @@
     
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/HEXO/">HEXO</a>
+          <a href="/tags/C/">C++</a>
         </span>
       
     
@@ -299,16 +307,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2023/05/28/C-note-5/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          C++ note (5)
-        </a>
-      
     </div>
     <div>
       
-        <a href="/2023/05/27/How-to-use-tags-plugin/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          How to use tags plugin
+        <a href="/2023/05/28/How-I-solve-the-tag-page-is-blank-problem/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          How I solve the 'tag page is blank' problem
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
