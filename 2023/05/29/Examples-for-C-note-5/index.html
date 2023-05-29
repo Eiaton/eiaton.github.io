@@ -233,6 +233,10 @@
 
 <!-- toc -->
 
+  <!-- tocbot -->
+<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
+
+
 <section class="px-6 max-w-prose mx-auto md:px-0">
   <!-- header -->
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
@@ -245,21 +249,38 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 20:47:38</time>
+          <time>2023-05-29 20:57:07</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>0 words</span>
+          <span>114 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    
+    <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">foo</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>: </span><br><span class="line">    <span class="built_in">foo</span>(<span class="type">int</span> i) &#123; </span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Constructing.\n&quot;</span>;</span><br><span class="line">    member = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">foo</span>(<span class="type">const</span> FOO&amp; other) &#123; cout &lt;&lt; <span class="string">&quot;Copy constructing.\n&quot;</span>;</span><br><span class="line">    member = other.member;</span><br><span class="line">    &#125;     </span><br><span class="line">    ~<span class="built_in">foo</span>() &#123; </span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;Destructing.\n&quot;</span>; </span><br><span class="line">      &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> member;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> member;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">(foo obj)</span> </span>&#123;</span><br><span class="line">  cout &lt;&lt; obt.<span class="built_in">get</span>() &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">foo <span class="title">get_foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="type">int</span> value;</span><br><span class="line">  cout &lt;&lt; <span class="string">&quot;Input an integer: &quot;</span>;</span><br><span class="line">  cin &gt;&gt; value;</span><br><span class="line">  <span class="function">foo <span class="title">obj</span><span class="params">(value)</span></span>;</span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="cpp">int main() &#123;
+  foo obj1(15);
+  foo obj2 = obj1;
+  display(obj2);
+  obj2 = get_foo();
+  display(obj2);
+
+  return (0);
+&#125;
+</code></pre>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
+    
+      
+        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
+          <a href="/tags/C/">C++</a>
+        </span>
+      
     
   </div>
   <!-- prev and next -->
