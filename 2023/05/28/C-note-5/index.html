@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-28 22:31:40</time>
+          <time>2023-05-29 19:05:51</time>
           <span class="text-gray-400">·</span>
-          <span>5 min</span>
+          <span>6 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.4k words</span>
+          <span>1.6k words</span>
         </section>
       </div>
     </div>
@@ -328,7 +328,17 @@
 <li>C::C(C&amp; obj) 不用 const 形式已过时。</li>
 <li>C::C(C&amp;&amp; obj) 形式称为移动构造函数（超纲）</li>
 </ol>
-<h4 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h4>
+<h4 id="要点-1"><a href="#要点-1" class="headerlink" title="要点"></a>要点</h4><ul>
+<li>形参类型为该类类型本身且参数传递方式为按引用传递</li>
+<li>用一个<strong>已存在</strong>的该类对象初始化新创建的对象</li>
+<li>每个类都必须有拷贝构造函数：<ul>
+<li>用户可根据自己的需要显式定义拷贝构造函数</li>
+<li>若用户未提供，则该类使用由系统提供的缺省拷贝构造函数（可用<code>= default</code>），也可用 <code>= delete</code> 弃置该函数</li>
+<li>缺省拷贝构造函数<strong>按照初始化顺序</strong>，对对象的各基类和非静态成员进行<em>完整的逐成员复制</em>，完成新对象的初始化。即<em>逐一调用成员的拷贝构造</em>，如果成员是基础类型，则复制值（赋值）</li>
+</ul>
+</li>
+</ul>
+<h4 id="隐式调用复制构造"><a href="#隐式调用复制构造" class="headerlink" title="隐式调用复制构造"></a>隐式调用复制构造</h4>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
