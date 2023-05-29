@@ -249,7 +249,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 21:30:42</time>
+          <time>2023-05-29 21:37:43</time>
           <span class="text-gray-400">·</span>
           <span>8 min</span>
           <span class="text-gray-400">·</span>
@@ -390,7 +390,7 @@
 <li>编译优化：  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  C tmp;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   实际的gcc&#x2F;g++会优化使得tmp和new C的地址是一样的</li>
 </ul>
-<h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><p>[Example 1](<a href="/2023/05/29/Examples-for-C-note-5/" title="Examples for C++ note (5)">Example 1</a>#Example 1)</p>
+<h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><p>[Example 1](/2023/05/29/Examples-for-C-note-5/#Example 1)</p>
 <h4 id="复制策略：拷贝构造函数自定义"><a href="#复制策略：拷贝构造函数自定义" class="headerlink" title="复制策略：拷贝构造函数自定义"></a>复制策略：拷贝构造函数自定义</h4><blockquote>
 <p>浅拷贝只复制成员指针的值，而不复制指向的对象实体，导致新旧对象成员指针指向同一块内存。但深拷贝要求成员指针指向的对象也要复制，新对象跟原对象的成员指针不会指向同一块内存，修改新对象不会改到原对象。</p>
 </blockquote>
@@ -404,7 +404,7 @@
 <li><em>&#x3D; 操作</em>重写，完成对象深复制策略</li>
 <li><em>析构函数</em>中<strong>释放内存</strong></li>
 </ul>
-<h5 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h5><p>[Example 2](<a href="/2023/05/29/Examples-for-C-note-5/" title="Examples for C++ note (5)">Example 2</a>#Example 2)</p>
+<h5 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h5><p>[Example 2](/2023/05/29/Examples-for-C-note-5/#Example 2)</p>
 
   </article>
   <!-- tag -->
