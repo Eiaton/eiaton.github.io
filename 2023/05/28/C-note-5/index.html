@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 19:05:51</time>
+          <time>2023-05-29 20:46:57</time>
           <span class="text-gray-400">·</span>
-          <span>6 min</span>
+          <span>7 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.6k words</span>
+          <span>2.1k words</span>
         </section>
       </div>
     </div>
@@ -338,7 +338,35 @@
 </ul>
 </li>
 </ul>
-<h4 id="隐式调用复制构造"><a href="#隐式调用复制构造" class="headerlink" title="隐式调用复制构造"></a>隐式调用复制构造</h4>
+<h4 id="隐式调用复制构造"><a href="#隐式调用复制构造" class="headerlink" title="隐式调用复制构造"></a>隐式调用复制构造</h4><ol>
+<li><p>对象作为函数值参</p>
+<p>将一个对象作为实参，以按值调用方式传递给被调用的形参对象</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 假定C为已定义的类，obj为 C 类对象</span></span><br><span class="line">   <span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">(C tmp)</span> </span>&#123;...&#125;</span><br><span class="line">             /</span><br><span class="line">            /</span><br><span class="line">           /</span><br><span class="line">          /</span><br><span class="line">         /</span><br><span class="line">   <span class="built_in">fn</span>(obj);</span><br><span class="line">   <span class="comment">// 用obj初始化tmp，如果有 C 类明确定义拷贝构造函数，将调用其；如果没有，将调用缺省拷贝构造函数</span></span><br><span class="line">   <span class="comment">// obj传递给fn函数，创建对象tmp时，调用 C 的拷贝构造函数用对象obj初始化对象tmp，tmp生存期结束时调用析构函数</span></span><br><span class="line"><span class="number">2.</span> 对象作为值从函数返回</span><br><span class="line">   </span><br><span class="line">   生成一个临时对象，作为函数的返回结果：</span><br><span class="line"></span><br><span class="line">   当函数返回某一对象时，系统将自动创建一个临时对象来保存函数的返回值。当创建此临时对象时，调用拷贝构造函数；当函数调用表达式结束后，撤销该临时对象，调用析构函数</span><br><span class="line">   ```<span class="function">cpp</span></span><br><span class="line"><span class="function">   C <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     C t;</span><br><span class="line">     ...</span><br><span class="line">     <span class="keyword">return</span> t</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>则</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmp = <span class="built_in">fn</span>();</span><br></pre></td></tr></table></figure>
+<p>t -&gt; temp_object -&gt; tmp</p>
+</li>
+</ol>
+<ul>
+<li>编译优化：  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  C tmp;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  实际的gcc&#x2F;g++会优化使得tmp和new C的地址是一样的</li>
+</ul>
+<p>  示例：</p>
+<h4 id="复制策略：拷贝构造函数自定义"><a href="#复制策略：拷贝构造函数自定义" class="headerlink" title="复制策略：拷贝构造函数自定义"></a>复制策略：拷贝构造函数自定义</h4><blockquote>
+<p>浅拷贝只复制成员指针的值，而不复制指向的对象实体，导致新旧对象成员指针指向同一块内存。但深拷贝要求成员指针指向的对象也要复制，新对象跟原对象的成员指针不会指向同一块内存，修改新对象不会改到原对象。</p>
+</blockquote>
+<ol>
+<li>对于不含指针成员的类，使用系统提供（编译器合成）的<strong>默认拷贝构造函数</strong>即可</li>
+<li>缺省拷贝构造函数使用浅复制策略，不能满足对含指针数据成员的类需要</li>
+<li>含指针成员的类通常应重写以下内容：</li>
+</ol>
+<ul>
+<li><em>构造函数（及拷贝构造函数）</em>中<strong>分配内存</strong>，深复制策略</li>
+<li><em>&#x3D; 操作</em>重写，完成对象深复制策略</li>
+<li><em>析构函数</em>中<strong>释放内存</strong></li>
+</ul>
+<p>示例：</p>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -353,6 +381,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="/2023/05/29/Examples-for-C-note-5/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Examples for C++ note (5)
+        </a>
       
     </div>
     <div>
