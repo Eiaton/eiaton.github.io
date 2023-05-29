@@ -249,18 +249,57 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 20:46:57</time>
+          <time>2023-05-29 21:25:36</time>
           <span class="text-gray-400">·</span>
-          <span>7 min</span>
+          <span>8 min</span>
           <span class="text-gray-400">·</span>
-          <span>2.1k words</span>
+          <span>2.3k words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="数据抽象类型-Ⅳ"><a href="#数据抽象类型-Ⅳ" class="headerlink" title="数据抽象类型 Ⅳ"></a>数据抽象类型 Ⅳ</h1><h2 id="对象成员初始化"><a href="#对象成员初始化" class="headerlink" title="对象成员初始化"></a>对象成员初始化</h2><h3 id="非静态数据成员初始化方法："><a href="#非静态数据成员初始化方法：" class="headerlink" title="非静态数据成员初始化方法："></a><em>非静态</em>数据成员初始化方法：</h3><ul>
+    <ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%9E%8B-%E2%85%B3">数据抽象类型 Ⅳ</a><ul>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E6%88%90%E5%91%98%E5%88%9D%E5%A7%8B%E5%8C%96">对象成员初始化</a><ul>
+<li><a href="#%E9%9D%9E%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%E6%88%90%E5%91%98%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95"><em>非静态</em>数据成员初始化方法：</a></li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8%E5%88%97%E8%A1%A8%E5%92%8C%E9%BB%98%E8%AE%A4%E6%88%90%E5%91%98%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8">为什么需要初始化器列表和默认成员初始化器？</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95">语法</a></li>
+<li><a href="#%E8%A6%81%E7%82%B9">要点</a><ul>
+<li><a href="#%E5%BF%85%E9%A1%BB%E4%BD%BF%E7%94%A8%E5%88%9D%E5%A7%8B%E5%8C%96%E5%99%A8%E5%88%97%E8%A1%A8%E7%9A%84%E6%97%B6%E5%80%99">必须使用初始化器列表的时候</a></li>
+<li><a href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E7%9A%84%E9%A1%BA%E5%BA%8F">成员变量声明的顺序</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B">示例</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A0">练习</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80">对象的内存布局</a><ul>
+<li><a href="#c%E5%86%85%E5%AD%98%E6%A0%BC%E5%B1%80%E8%A7%81-post_link-c-note-4">C++内存格局见 {post_link C-note-4}</a></li>
+<li><a href="#%E5%9C%A8%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E6%97%B6">在类的定义时：</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F">注意：</a></li>
+<li><a href="#c-%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E8%81%94%E7%BC%96"><code>C++</code> 使用静态联编</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0">拷贝构造函数</a><ul>
+<li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li>
+<li><a href="#%E8%AF%AD%E6%B3%95-1">语法</a></li>
+<li><a href="#%E8%A6%81%E7%82%B9-1">要点</a></li>
+<li><a href="#%E9%9A%90%E5%BC%8F%E8%B0%83%E7%94%A8%E5%A4%8D%E5%88%B6%E6%9E%84%E9%80%A0">隐式调用复制构造</a><ul>
+<li><a href="#%E7%A4%BA%E4%BE%8B-1">示例：</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E7%AD%96%E7%95%A5%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%87%AA%E5%AE%9A%E4%B9%89">复制策略：拷贝构造函数自定义</a><ul>
+<li><a href="#%E7%A4%BA%E4%BE%8B-2">示例：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据抽象类型-Ⅳ"><a href="#数据抽象类型-Ⅳ" class="headerlink" title="数据抽象类型 Ⅳ"></a>数据抽象类型 Ⅳ</h1><h2 id="对象成员初始化"><a href="#对象成员初始化" class="headerlink" title="对象成员初始化"></a>对象成员初始化</h2><h3 id="非静态数据成员初始化方法："><a href="#非静态数据成员初始化方法：" class="headerlink" title="非静态数据成员初始化方法："></a><em>非静态</em>数据成员初始化方法：</h3><ul>
 <li>在构造函数的成员 <strong>初始化器列表</strong> 中。（C++11）</li>
 <li>通过 <strong>默认成员初始化器</strong> ，它是成员声明中包含的 <strong>花括号 或 等号 初始化器</strong>。（C++11）</li>
 <li>构造函数体内进行赋值操作。（<strong>不要构造成员</strong>，除非特别熟悉 <code>new</code> 的用法）</li>
@@ -351,7 +390,7 @@
 <li>编译优化：  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C <span class="title">fn</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  C tmp;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   实际的gcc&#x2F;g++会优化使得tmp和new C的地址是一样的</li>
 </ul>
-<p>  示例：</p>
+<h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><a href="/2023/05/29/Examples-for-C-note-5/" title="Examples for C++ note (5)">Example 1</a>
 <h4 id="复制策略：拷贝构造函数自定义"><a href="#复制策略：拷贝构造函数自定义" class="headerlink" title="复制策略：拷贝构造函数自定义"></a>复制策略：拷贝构造函数自定义</h4><blockquote>
 <p>浅拷贝只复制成员指针的值，而不复制指向的对象实体，导致新旧对象成员指针指向同一块内存。但深拷贝要求成员指针指向的对象也要复制，新对象跟原对象的成员指针不会指向同一块内存，修改新对象不会改到原对象。</p>
 </blockquote>
@@ -365,7 +404,10 @@
 <li><em>&#x3D; 操作</em>重写，完成对象深复制策略</li>
 <li><em>析构函数</em>中<strong>释放内存</strong></li>
 </ul>
-<p>示例：</p>
+<h5 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h5><a href="/2023/05/29/Examples-for-C-note-5/" title="Examples for C++ note (5)">Example 2</a>
+
+
+
 
   </article>
   <!-- tag -->
