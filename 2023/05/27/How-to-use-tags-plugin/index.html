@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-28 00:53:07</time>
+          <time>2023-05-29 21:09:47</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>305 words</span>
+          <span>422 words</span>
         </section>
       </div>
     </div>
@@ -275,6 +275,13 @@
 <p>例如，在文章中使用 <code>&#123;% post_link how-to-bake-a-cake %&#125;</code> 时，只需有一个名为 how-to-bake-a-cake.md 的文章文件即可。即使这个文件位于站点文件夹的 source&#x2F;posts&#x2F;2015-02-my-family-holiday 目录下、或者文章的永久链接是 2018&#x2F;en&#x2F;how-to-bake-a-cake，都没有影响。</p>
 <p>默认链接文字是文章的标题，你也可以自定义要显示的文本。</p>
 <p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用escape选项，禁止对特殊字符进行转义。</p>
+<h2 id="嵌入图片"><a href="#嵌入图片" class="headerlink" title="嵌入图片"></a>嵌入图片</h2><p>自 hexo-renderer-marked 3.1.0 以后可以启用自动路径解析</p>
+<p>在 config.yml 内：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+<p>启用后，资源图片将会被自动解析为其对应文章的路径</p>
+<p>例如：</p>
+<p>image.jpg 位置为 &#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F;image.jpg ，这表示它是 &#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F; 文章的一张资源图片， <code>![](image.jpg)</code> 将会被解析为 </p>
+<p><code>&lt;img src=&quot;/2020/01/02/foo/image.jpg&quot;&gt;</code></p>
 
   </article>
   <!-- tag -->
