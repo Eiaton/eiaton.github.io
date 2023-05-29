@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 21:10:26</time>
+          <time>2023-05-29 21:12:28</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>2 min</span>
           <span class="text-gray-400">·</span>
-          <span>432 words</span>
+          <span>561 words</span>
         </section>
       </div>
     </div>
@@ -283,7 +283,14 @@
 <p>image.jpg 位置为 &#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F;image.jpg ，这表示它是 &#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F; 文章的一张资源图片， <code>![](image.jpg)</code> 将会被解析为 </p>
 <p><code>&lt;img src=&quot;/2020/01/02/foo/image.jpg&quot;&gt;</code></p>
 <p>参见：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders">https://hexo.io/zh-cn/docs/asset-folders</a></p>
-
+<h3 id="默认（无选项）"><a href="#默认（无选项）" class="headerlink" title="默认（无选项）"></a>默认（无选项）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img foo.jpg %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="自定义-class-属性"><a href="#自定义-class-属性" class="headerlink" title="自定义 class 属性"></a>自定义 class 属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img post-image foo.jpg %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot; class=&quot;post-image&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="展示尺寸"><a href="#展示尺寸" class="headerlink" title="展示尺寸"></a>展示尺寸</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img foo.jpg 500 400 %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot; width=&quot;500&quot; height=&quot;400&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="title-和-alt-属性"><a href="#title-和-alt-属性" class="headerlink" title="title 和 alt 属性"></a>title 和 alt 属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img logo.svg &quot;lorem ipsum&#x27;dolor&#x27;&quot; %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot; title=&quot;lorem ipsum&quot; alt=&quot;dolor&quot;&gt;</span><br></pre></td></tr></table></figure>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
