@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-01 23:14:58</time>
+          <time>2023-06-04 17:30:18</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>366 words</span>
+          <span>486 words</span>
         </section>
       </div>
     </div>
@@ -287,60 +287,46 @@
 <th align="center"></th>
 <th align="center">运算符</th>
 <th align="center">操作符</th>
-<th></th>
-<th></th>
-<th></th>
 </tr>
 </thead>
 <tbody><tr>
 <td align="center">双目</td>
 <td align="center">算术运算<br/>关系运算符<br/>逻辑运算<br/>位运算</td>
 <td align="center"><code>+</code>(add), <code>-</code>(minus), <code>*</code>(times), <code>/</code>(divide), <code>%</code>(mod)<br/><code>==</code>(equal), <code>!=</code>(unequal), <code>&lt;</code>(less), <code>&gt;</code>(more), <code>&lt;=</code>(less or equal), <code>&gt;=</code>(more or equal)<br/><code>||</code>, <code>&amp;&amp;</code>, <code>!</code><br/> <code>|</code> , <code>&amp;</code>, <code>~</code>, <code>^</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center"></td>
 <td align="center">单目运算</td>
 <td align="center"><code>+</code>(pos), <code>-</code>(neg), <code>*</code>(ptr), <code>&amp;</code>(addr)</td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center"></td>
 <td align="center">自增自减运算</td>
 <td align="center"><code>++</code>， <code>--</code></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center"></td>
 <td align="center">赋值运算</td>
 <td align="center"><code>=</code>， <code>+=</code>， <code>-=</code>， <code>*=</code>， <code>/=</code>， <code>&amp;=</code>， <code>|=</code>， <code>^=</code>, <code>&lt;&lt;=</code>, <code>&gt;&gt;=</code></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center"></td>
 <td align="center">其他运算</td>
 <td align="center"><code>()</code>, <code>-&gt;</code>, <code>,</code>, <code>[]</code></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 <tr>
 <td align="center"></td>
 <td align="center">空间申请和释放</td>
 <td align="center"><code>new</code>, <code>delete</code>, <code>new[]</code>, <code>delete[]</code></td>
-<td></td>
-<td></td>
-<td></td>
 </tr>
 </tbody></table>
+<h2 id="不可重载运算符"><a href="#不可重载运算符" class="headerlink" title="不可重载运算符"></a>不可重载运算符</h2><p><code>::</code>,  <code>.</code>,  <code>.*</code>(通过成员指针的成员访问),  <code>?:</code>,  <code>sizeof</code>(<code>alignof</code>, <code>typeid</code>等),  <code>#</code>(预处理符号)</p>
+<h3 id="其他限制"><a href="#其他限制" class="headerlink" title="其他限制"></a>其他<em>限制</em></h3><ul>
+<li>不能创建新运算符，例如 **、&lt;&gt; 或 &amp;|。</li>
+<li>运算符 <code>&amp;&amp;</code> 与 <code>||</code> 的重载<span style="color:orange">失去短路求值</span></li>
+<li>重载的运算符 <code>-&gt;</code> 必须要么返回裸指针，要么（按引用或值）返回同样重载了运算符 <code>-&gt;</code> 的对象。</li>
+<li>不可能更改运算符的优先级、结合方向或操作数的数量。</li>
+</ul>
 
   </article>
   <!-- tag -->
@@ -356,6 +342,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="/2023/06/04/Todo-list-1/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Todo list (1)
+        </a>
       
     </div>
     <div>
