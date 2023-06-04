@@ -249,11 +249,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-04 17:30:18</time>
+          <time>2023-06-04 17:37:53</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>2 min</span>
           <span class="text-gray-400">·</span>
-          <span>486 words</span>
+          <span>561 words</span>
         </section>
       </div>
     </div>
@@ -327,6 +327,9 @@
 <li>重载的运算符 <code>-&gt;</code> 必须要么返回裸指针，要么（按引用或值）返回同样重载了运算符 <code>-&gt;</code> 的对象。</li>
 <li>不可能更改运算符的优先级、结合方向或操作数的数量。</li>
 </ul>
+<h2 id="双目-x2F-单目运算符、成员函数重载例子"><a href="#双目-x2F-单目运算符、成员函数重载例子" class="headerlink" title="双目&#x2F;单目运算符、成员函数重载例子"></a>双目&#x2F;单目运算符、成员函数重载例子</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Integer</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Integer</span>(<span class="type">int</span> x = <span class="number">0</span>) : <span class="built_in">x</span>(x) &#123;&#125;</span><br><span class="line">    Integer <span class="keyword">operator</span> + (<span class="type">const</span> Integer&amp; Int) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Integer</span>(x + Int.x);</span><br><span class="line">    &#125;</span><br><span class="line">    Integer <span class="keyword">operator</span> - (<span class="type">const</span> Integer&amp; Int) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Integer</span>(x - Int.x);</span><br><span class="line">    &#125;</span><br><span class="line">    Integer <span class="keyword">operator</span> - () &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">Integer</span>(-x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      cout &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
 
   </article>
   <!-- tag -->
