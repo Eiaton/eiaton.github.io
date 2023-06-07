@@ -153,7 +153,9 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 <body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
   <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
   <div class="max-auto">
@@ -253,7 +255,7 @@
           <span class="text-gray-400">·</span>
           <span>2 min</span>
           <span class="text-gray-400">·</span>
-          <span>561 words</span>
+          <span>489 words</span>
         </section>
       </div>
     </div>
@@ -261,36 +263,58 @@
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
     <h1 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h1><p>标签插件不应该被包裹在 Markdown 语法中</p>
-<p>例如： <code>[](&#123;% post_path lorem-ipsum %&#125;)</code> 是不被支持的。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">name</span>](<span class="link">position/pic_name.type</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// on web</span><br><span class="line">&quot;pic&quot;</span><br><span class="line">pic_name</span><br></pre></td></tr></table></figure>
+<p>例如： <code>[]({% post_path lorem-ipsum %})</code> 是不被支持的。</p>
+<pre class=" language-markdown"><code class="language-markdown"><span class="token url">![name](position/pic_name.type)</span>
+</code></pre>
+<pre><code>// on web
+"pic"
+pic_name
+</code></pre>
 <blockquote>
 <p>hexo的处理方式：</p>
 </blockquote>
-<h2 id="引用块（block-quote）-x2F-引用（quote）"><a href="#引用块（block-quote）-x2F-引用（quote）" class="headerlink" title="引用块（block quote）&#x2F;引用（quote）"></a>引用块（block quote）&#x2F;引用（quote）</h2><p>在文章中插入引言，可包含作者、来源和标题。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="引用块（block-quote）-x2F-引用（quote）"><a href="#引用块（block-quote）-x2F-引用（quote）" class="headerlink" title="引用块（block quote）/引用（quote）"></a>引用块（block quote）/引用（quote）</h2><p>在文章中插入引言，可包含作者、来源和标题。</p>
+<pre class=" language-hexo"><code class="language-hexo">{% blockquote [author[, source]] [link] [source_link_title] %}
+content
+{% endblockquote %}
+</code></pre>
 <h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章的链接。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% post<span class="emphasis">_path filename %&#125;</span></span><br><span class="line"><span class="emphasis">&#123;% post_</span>link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-markdown"><code class="language-markdown">{% post<span class="token italic"><span class="token punctuation">_</span>path filename %}
+{% post<span class="token punctuation">_</span></span>link filename <span class="token url">[title] [<span class="token variable">escape</span>]</span> %}
+</code></pre>
 <p>在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。</p>
-<p>例如，在文章中使用 <code>&#123;% post_link how-to-bake-a-cake %&#125;</code> 时，只需有一个名为 how-to-bake-a-cake.md 的文章文件即可。即使这个文件位于站点文件夹的 source&#x2F;posts&#x2F;2015-02-my-family-holiday 目录下、或者文章的永久链接是 2018&#x2F;en&#x2F;how-to-bake-a-cake，都没有影响。</p>
+<p>例如，在文章中使用 <code>{% post_link how-to-bake-a-cake %}</code> 时，只需有一个名为 how-to-bake-a-cake.md 的文章文件即可。即使这个文件位于站点文件夹的 source/posts/2015-02-my-family-holiday 目录下、或者文章的永久链接是 2018/en/how-to-bake-a-cake，都没有影响。</p>
 <p>默认链接文字是文章的标题，你也可以自定义要显示的文本。</p>
 <p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用escape选项，禁止对特殊字符进行转义。</p>
 <h2 id="嵌入图片"><a href="#嵌入图片" class="headerlink" title="嵌入图片"></a>嵌入图片</h2><p>自 hexo-renderer-marked 3.1.0 以后可以启用自动路径解析</p>
 <p>在 config.yml 内：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></table></figure>
+<pre><code>post_asset_folder: true
+marked:
+  prependRoot: true
+  postAsset: true
+</code></pre>
 <p>启用后，资源图片将会被自动解析为其对应文章的路径</p>
 <p>例如：</p>
-<p>image.jpg 位置为 &#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F;image.jpg ，这表示它是 &#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F; 文章的一张资源图片， <code>![](image.jpg)</code> 将会被解析为 </p>
-<p><code>&lt;img src=&quot;/2020/01/02/foo/image.jpg&quot;&gt;</code></p>
+<p>image.jpg 位置为 /2020/01/02/foo/image.jpg ，这表示它是 /2020/01/02/foo/ 文章的一张资源图片， <code>![](image.jpg)</code> 将会被解析为 </p>
+<p><code>&lt;img src="/2020/01/02/foo/image.jpg"&gt;</code></p>
 <p>参见：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders">https://hexo.io/zh-cn/docs/asset-folders</a></p>
-<h3 id="默认（无选项）"><a href="#默认（无选项）" class="headerlink" title="默认（无选项）"></a>默认（无选项）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img foo.jpg %&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="自定义-class-属性"><a href="#自定义-class-属性" class="headerlink" title="自定义 class 属性"></a>自定义 class 属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img post-image foo.jpg %&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot; class=&quot;post-image&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="展示尺寸"><a href="#展示尺寸" class="headerlink" title="展示尺寸"></a>展示尺寸</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img foo.jpg 500 400 %&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot; width=&quot;500&quot; height=&quot;400&quot;&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="title-和-alt-属性"><a href="#title-和-alt-属性" class="headerlink" title="title 和 alt 属性"></a>title 和 alt 属性</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img logo.svg &quot;lorem ipsum&#x27;dolor&#x27;&quot; %&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;/2020/01/02/hello/foo.jpg&quot; title=&quot;lorem ipsum&quot; alt=&quot;dolor&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="默认（无选项）"><a href="#默认（无选项）" class="headerlink" title="默认（无选项）"></a>默认（无选项）</h3><pre><code>{% asset_img foo.jpg %}
+</code></pre>
+<pre><code>&lt;img src="/2020/01/02/hello/foo.jpg"&gt;
+</code></pre>
+<h3 id="自定义-class-属性"><a href="#自定义-class-属性" class="headerlink" title="自定义 class 属性"></a>自定义 class 属性</h3><pre><code>{% asset_img post-image foo.jpg %}
+</code></pre>
+<pre><code>&lt;img src="/2020/01/02/hello/foo.jpg" class="post-image"&gt;
+</code></pre>
+<h3 id="展示尺寸"><a href="#展示尺寸" class="headerlink" title="展示尺寸"></a>展示尺寸</h3><pre><code>{% asset_img foo.jpg 500 400 %}
+</code></pre>
+<pre><code>&lt;img src="/2020/01/02/hello/foo.jpg" width="500" height="400"&gt;
+</code></pre>
+<h3 id="title-和-alt-属性"><a href="#title-和-alt-属性" class="headerlink" title="title 和 alt 属性"></a>title 和 alt 属性</h3><pre><code>{% asset_img logo.svg "lorem ipsum'dolor'" %}
+</code></pre>
+<pre><code>&lt;img src="/2020/01/02/hello/foo.jpg" title="lorem ipsum" alt="dolor"&gt;
+</code></pre>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">

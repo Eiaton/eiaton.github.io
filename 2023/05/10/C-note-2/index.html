@@ -153,7 +153,9 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 <body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
   <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
   <div class="max-auto">
@@ -253,7 +255,7 @@
           <span class="text-gray-400">·</span>
           <span>6 min</span>
           <span class="text-gray-400">·</span>
-          <span>1.8k words</span>
+          <span>1.7k words</span>
         </section>
       </div>
     </div>
@@ -310,11 +312,46 @@
 <li>Day</li>
 </ul>
 <p>但C语言中的 <code>struct</code> 只能包含变量，<br>不能包括实现ADT当中操作的函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Date</span> &#123;</span></span><br><span class="line">  <span class="type">int</span> year;</span><br><span class="line">  <span class="type">int</span> month;</span><br><span class="line">  <span class="type">int</span> date;</span><br><span class="line">&#125; date;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">set</span> <span class="params">(<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">getYear</span><span class="params">()</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">getMonth</span><span class="params">()</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">getDay</span><span class="params">()</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">print</span><span class="params">()</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">increment</span><span class="params">()</span>;</span><br><span class="line"><span class="type">void</span> <span class="title function_">decrement</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
+<pre class=" language-C"><code class="language-C">struct Date {
+  int year;
+  int month;
+  int date;
+} date;
+
+void set (int, int, int);
+int getYear();
+int getMonth();
+int getDay();
+void print();
+void increment();
+void decrement();
+</code></pre>
 <h3 id="C-对象-amp-类"><a href="#C-对象-amp-类" class="headerlink" title="C++ 对象&amp;类"></a><code>C++</code> 对象&amp;类</h3><p>新增<em>面向对象编程</em></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">classname</span> &#123;</span><br><span class="line">  Access specifiers:</span><br><span class="line">    Date members/variables;<span class="comment">//变量</span></span><br><span class="line">    <span class="function">Member <span class="title">fn</span><span class="params">()</span> </span>&#123;&#125;<span class="comment">//方法</span></span><br><span class="line">&#125;;<span class="comment">//分号结束一个类</span></span><br></pre></td></tr></table></figure>
-<h4 id="类的示例"><a href="#类的示例" class="headerlink" title="类的示例"></a>类的示例</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Date</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> year;</span><br><span class="line">    <span class="type">int</span> month;</span><br><span class="line">    <span class="type">int</span> day;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line">    <span class="type">int</span> flag;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getYear</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getMonth</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getDay</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">increment</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">decrement</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在<code>&#123;&#125;</code>中列出类的成员。类的成员包括：</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">classname</span> <span class="token punctuation">{</span>
+  Access specifiers<span class="token operator">:</span>
+    Date members<span class="token operator">/</span>variables<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//变量</span>
+    Member <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">//方法</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//分号结束一个类</span>
+</code></pre>
+<h4 id="类的示例"><a href="#类的示例" class="headerlink" title="类的示例"></a>类的示例</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Date</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> year<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> month<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> day<span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">getYear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">getDay</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>在<code>{}</code>中列出类的成员。类的成员包括：</p>
 <ul>
 <li><strong>数据成员</strong>：一般说来，数据成员是需要隐藏的对象；即外部的程序是不能直接访问这些数据的，应该通过函数成员来访问这些数据。所以一般情况下，数据成员通过关键字 <code>private</code> 声明为私有成员（private member）。</li>
 <li><strong>函数成员</strong>：通过关键字 <code>public</code> 声明为公有成员（public member）。外部程序可以访问共有成员，但无法访问私有成员。</li>
@@ -322,16 +359,39 @@
 </ul>
 <h4 id="结构体-v-s-类"><a href="#结构体-v-s-类" class="headerlink" title="结构体 v.s. 类"></a>结构体 v.s. 类</h4><p><code>C</code> 的 <code>struct</code> 只能包含变量，而 <code>C++</code> 的 <code>class</code> 还可以包含函数。<code>set()</code> 是用来处理成员变量的函数，在 <code>C</code> 中，我们将它放在了 <code>struct Date</code> 外部，和成员变量是分离的；而在 <code>C++</code> 中，我们将它放在了 <code>class Date</code> 内部，使它和成员变量聚集在一起，看起来更像一个整体。</p>
 <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>通过结构体定义出来的变量传统上叫变量，而通过类定义出来的变量有了新的名称，叫做<em>对象</em>（Object）。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Date date;</span><br></pre></td></tr></table></figure>
+<pre class=" language-cpp"><code class="language-cpp">Date date<span class="token punctuation">;</span>
+</code></pre>
 <h3 id="成员函数"><a href="#成员函数" class="headerlink" title="成员函数"></a>成员函数</h3><p>类的<em>成员函数</em>指，把定义和原型写在类定义内部的函数，就像类定义中的变量一样。</p>
 <p>类成员函数是类的一个成员，它可以操作类的任意对象，可以访问对象中的所有成员。</p>
-<p>成员函数可以定义在类定义内部，或者单独使用<em>范围解析运算符</em> <code>::</code> 来定义。在类定义中定义的成员函数把函数声明为内联的，即便没有使用 inline 标识符。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Date</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(<span class="type">int</span> y, <span class="type">int</span> m, <span class="type">int</span> d)</span> </span>&#123;</span><br><span class="line">      year = y;</span><br><span class="line">      month = m;</span><br><span class="line">      day = d;</span><br><span class="line">    &#125;</span><br><span class="line">......</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Date</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line">......</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Date::set</span><span class="params">(<span class="type">int</span> y, <span class="type">int</span> m, <span class="type">int</span> d)</span> </span>&#123;</span><br><span class="line">  year = y;</span><br><span class="line">  month = m;</span><br><span class="line">  day = d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>成员函数可以定义在类定义内部，或者单独使用<em>范围解析运算符</em> <code>::</code>&nbsp;来定义。在类定义中定义的成员函数把函数声明为内联的，即便没有使用 inline 标识符。</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Date</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">,</span> <span class="token keyword">int</span> d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      year <span class="token operator">=</span> y<span class="token punctuation">;</span>
+      month <span class="token operator">=</span> m<span class="token punctuation">;</span>
+      day <span class="token operator">=</span> d<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Date</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> Date<span class="token operator">::</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">,</span> <span class="token keyword">int</span> d<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  year <span class="token operator">=</span> y<span class="token punctuation">;</span>
+  month <span class="token operator">=</span> m<span class="token punctuation">;</span>
+  day <span class="token operator">=</span> d<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <h4 id="预处理命令"><a href="#预处理命令" class="headerlink" title="预处理命令"></a>预处理命令</h4><p>在 DATE.cpp 文件开头需要加入预处理命令</p>
-<p><code>#include &quot;DATE.hpp&quot;</code></p>
+<p><code>#include "DATE.hpp"</code></p>
 <p>这是因为在 DATE.cpp 中要用到用户自定义的标识符 <code>DATE</code> ，而它的定义在 DATE.hpp 中。</p>
-<p>在 DATE.hpp 中，各函数原型是在 <code>&#123;&#125;</code> 中的。根据标识符的作用域规则，它们的作用范围仅在类定义中，而不包括 DATE.cpp 。因此在 DATE.cpp 中需要利用作用域解释运算符 <code>::</code> 来指明这里的函数是类 <code>DATE</code> 里的成员函数。</p>
+<p>在 DATE.hpp 中，各函数原型是在 <code>{}</code> 中的。根据标识符的作用域规则，它们的作用范围仅在类定义中，而不包括 DATE.cpp 。因此在 DATE.cpp 中需要利用作用域解释运算符 <code>::</code> 来指明这里的函数是类 <code>DATE</code> 里的成员函数。</p>
 <p>DATE.cpp 中有时还包括 <code>DATE</code> 内部要使用到的函数，例如daysInMonth。</p>
 <ul>
 <li><p>这种函数并非对外公开供用户使用，因此可以将其声明为私有成员。</p>
@@ -340,7 +400,9 @@
 </li>
 </ul>
 <p>调用成员函数和成员变量是在对象上使用点运算符（.），这样它就能操作与该对象相关的数据</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">date.flag = <span class="number">1</span>;</span><br><span class="line">date.<span class="built_in">set</span>(<span class="number">2022</span>,<span class="number">1</span>,<span class="number">30</span>);</span><br></pre></td></tr></table></figure>
+<pre class=" language-cpp"><code class="language-cpp">date<span class="token punctuation">.</span>flag <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+date<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">2022</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <h4 id="类的静态成员"><a href="#类的静态成员" class="headerlink" title="类的静态成员"></a>类的静态成员</h4><p>静态（static）成员是<strong>类的组成部分但不是任何对象的组成部分</strong></p>
 <ul>
 <li>通过在成员声明前加上保留字 <code>static</code> 将成员设为static（<ul>
@@ -348,15 +410,35 @@
 <li>在成员函数的返回类型前加保留字 <code>static</code> 声明静态成员函数）</li>
 </ul>
 </li>
-<li>static成员遵循正常的公有&#x2F;私有访问规则。</li>
+<li>static成员遵循正常的公有/私有访问规则。</li>
 <li><code>C++</code> 程序中，如果访问控制允许的话，可在类作用域外直接（不通过对象）访问静态成员（需加上类名和 <code>::</code> ）</li>
 <li>静态数据成员具有静态生存期，是类的所有对象共享的存储空间，是整个类的所有对象的属性，而不是某个对象的属性。</li>
 <li>与非静态数据成员不同，静态数据成员不是通过构造函数进行初始化，而是必须在类定义体的外部再定义一次，且恰好一次，通常是在类的实现文件中再声明一次，而且此时不能再用 <code>static</code> 修饰。</li>
 <li>静态成员函数不属于任何对象 </li>
 <li>静态成员函数没有 <code>this</code> 指针</li>
-<li>静态成员函数不能直接访问类的非静态数据成员，只能直接访问类的静态数据成员<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//date.hpp</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Date</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="type">static</span> <span class="type">int</span> count;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">static</span> <span class="type">void</span> <span class="title">getCount</span><span class="params">()</span></span>;</span><br><span class="line">    ...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//date.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> Date::count = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//必须在类外定义体的外部再定义一次</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Date::getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>静态成员函数不能直接访问类的非静态数据成员，只能直接访问类的静态数据成员</li>
 </ul>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//date.hpp</span>
+<span class="token keyword">class</span> <span class="token class-name">Date</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> count<span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+  <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//date.cpp</span>
+
+<span class="token keyword">int</span> Date<span class="token operator">::</span>count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//必须在类外定义体的外部再定义一次</span>
+
+<span class="token keyword">void</span> Date<span class="token operator">::</span><span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
   </article>
   <!-- tag -->
