@@ -155,7 +155,9 @@
 
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-vs.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 <body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
   <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
   <div class="max-auto">
@@ -264,8 +266,8 @@
   <article class="post-content mt-10 prose dark:prose-invert post-content">
     <h1 id="标签插件（Tag-Plugins）"><a href="#标签插件（Tag-Plugins）" class="headerlink" title="标签插件（Tag Plugins）"></a>标签插件（Tag Plugins）</h1><p>标签插件不应该被包裹在 Markdown 语法中</p>
 <p>例如： <code>[]({% post_path lorem-ipsum %})</code> 是不被支持的。</p>
-<pre class=" language-markdown"><code class="language-markdown"><span class="token url">![name](position/pic_name.type)</span>
-</code></pre>
+<pre class="line-numbers language-markdown"><code class="language-markdown"><span class="token url">![name](position/pic_name.type)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>// on web
 "pic"
 pic_name
@@ -274,14 +276,14 @@ pic_name
 <p>hexo的处理方式：</p>
 </blockquote>
 <h2 id="引用块（block-quote）-x2F-引用（quote）"><a href="#引用块（block-quote）-x2F-引用（quote）" class="headerlink" title="引用块（block quote）/引用（quote）"></a>引用块（block quote）/引用（quote）</h2><p>在文章中插入引言，可包含作者、来源和标题。</p>
-<pre class=" language-hexo"><code class="language-hexo">{% blockquote [author[, source]] [link] [source_link_title] %}
+<pre class="line-numbers language-hexo"><code class="language-hexo">{% blockquote [author[, source]] [link] [source_link_title] %}
 content
 {% endblockquote %}
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><p>引用其他文章的链接。</p>
-<pre class=" language-markdown"><code class="language-markdown">{% post<span class="token italic"><span class="token punctuation">_</span>path filename %}
+<pre class="line-numbers language-markdown"><code class="language-markdown">{% post<span class="token italic"><span class="token punctuation">_</span>path filename %}
 {% post<span class="token punctuation">_</span></span>link filename <span class="token url">[title] [<span class="token variable">escape</span>]</span> %}
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>在使用此标签时可以忽略文章文件所在的路径或者文章的永久链接信息、如语言、日期。</p>
 <p>例如，在文章中使用 <code>{% post_link how-to-bake-a-cake %}</code> 时，只需有一个名为 how-to-bake-a-cake.md 的文章文件即可。即使这个文件位于站点文件夹的 source/posts/2015-02-my-family-holiday 目录下、或者文章的永久链接是 2018/en/how-to-bake-a-cake，都没有影响。</p>
 <p>默认链接文字是文章的标题，你也可以自定义要显示的文本。</p>

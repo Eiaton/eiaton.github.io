@@ -155,7 +155,9 @@
 
 <meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-vs.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
+<script src="/js/prism-line-numbers.min.js"></script></head>
 <body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
   <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
   <div class="max-auto">
@@ -326,13 +328,13 @@
 <li><p>在函数调用时，第一个进栈的是主函数中后的下一条指令（函数调用语句的下一条可执行语句）的地址，然后是函数的各个参数，在大多数的<code>C</code>编译器中，参数是由右往左入栈的，然后是函数中的局部变量。<em><strong>静态变量是不入栈的</strong></em>。当本次函数调用结束后，<strong>局部变量先出栈，然后是参数</strong>，最后栈顶指针指向最开始存的地址，也就是主函数中的下一条指令，程序由该点继续运行。</p>
 </li>
 </ul>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">char</span> <span class="token operator">*</span>s1 <span class="token operator">=</span> <span class="token string">"Literal"</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 文字在代码区，仅分配了字符指针</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">char</span> <span class="token operator">*</span>s1 <span class="token operator">=</span> <span class="token string">"Literal"</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 文字在代码区，仅分配了字符指针</span>
 <span class="token comment" spellcheck="true">// s1[0] = 'I'; &amp;nbsp;      // Segmentation fault </span>
-</code></pre>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">char</span> s2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Initial Literal"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 分配数组空间</span>
-</code></pre>
-<pre class=" language-cpp"><code class="language-cpp">ptr_type<span class="token operator">*</span> ptr_name <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token punctuation">(</span>ptr_type<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 分配结构空间及指针</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">char</span> s2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Initial Literal"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 分配数组空间</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp">ptr_type<span class="token operator">*</span> ptr_name <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token punctuation">(</span>ptr_type<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 分配结构空间及指针</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="堆-栈-的性能区别"><a href="#堆-栈-的性能区别" class="headerlink" title="堆 栈 的性能区别"></a><code>堆 栈</code> 的性能区别</h3><ul>
 <li><p>写入方面：<strong>入栈</strong>比在堆上分配内存要<strong>快</strong>，因为入栈时操作系统<strong>无需分配新的空间</strong>，只需要将新数据放入栈顶即可。相比之下，在堆上分配内存则需要更多的工作，这是因为操作系统必须首先找到一块足够存放数据的内存空间，接着做一些记录为下一次分配做准备。</p>
 </li>
@@ -349,7 +351,7 @@
 <li>申请的空间必须释放，否则会导致<em>内存泄漏</em></li>
 <li><code>free</code> 后<em>再使用或释放指针</em>，行为不可预测。</li>
 </ul>
-<pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span> <span class="token keyword">int</span> x<span class="token punctuation">;</span> <span class="token keyword">int</span> y<span class="token punctuation">;</span> <span class="token punctuation">}</span> Point<span class="token punctuation">;</span>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span> <span class="token keyword">int</span> x<span class="token punctuation">;</span> <span class="token keyword">int</span> y<span class="token punctuation">;</span> <span class="token punctuation">}</span> Point<span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// 分配变量或一维可变数组</span>
   Point<span class="token operator">*</span> p1 <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>Point<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -372,7 +374,7 @@
 <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token function">free</span><span class="token punctuation">(</span>p3<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="new-和-delete-、动态创建变量-x2F-数组、内存泄漏、-default"><a href="#new-和-delete-、动态创建变量-x2F-数组、内存泄漏、-default" class="headerlink" title="new 和 delete 、动态创建变量/数组、内存泄漏、 = default"></a><code>new</code> 和 <code>delete</code> 、动态创建变量/数组、内存泄漏、 <code>= default</code></h2><a href="/2023/05/10/C-note/" title="C++ note (1)">C++ note (1)</a>
   </article>
   <!-- tag -->
