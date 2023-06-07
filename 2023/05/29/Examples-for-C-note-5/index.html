@@ -257,56 +257,15 @@
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>119 words</span>
+          <span>118 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">foo</span> <span class="token punctuation">{</span>
-
-  <span class="token keyword">public</span><span class="token operator">:</span> 
-    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-      cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Constructing.\n"</span><span class="token punctuation">;</span>
-    member <span class="token operator">=</span> i<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">const</span> FOO<span class="token operator">&amp;</span> other<span class="token punctuation">)</span> <span class="token punctuation">{</span> cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Copy constructing.\n"</span><span class="token punctuation">;</span>
-    member <span class="token operator">=</span> other<span class="token punctuation">.</span>member<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> 
-    <span class="token operator">~</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-      cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Destructing.\n"</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-    <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> member<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-  <span class="token keyword">private</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> member<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>foo obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  cout <span class="token operator">&lt;&lt;</span> obt<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"\n"</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-foo <span class="token function">get_foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">int</span> value<span class="token punctuation">;</span>
-  cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Input an integer: "</span><span class="token punctuation">;</span>
-  cin <span class="token operator">>></span> value<span class="token punctuation">;</span>
-  foo <span class="token function">obj</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  foo <span class="token function">obj1</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  foo obj2 <span class="token operator">=</span> obj1<span class="token punctuation">;</span>
-  <span class="token function">display</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  obj2 <span class="token operator">=</span> <span class="token function">get_foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">display</span><span class="token punctuation">(</span>obj2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <h2 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h2><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">foo</span> {</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>: </span><br><span class="line">    <span class="built_in">foo</span>(<span class="type">int</span> i) { </span><br><span class="line">      cout &lt;&lt; <span class="string">"Constructing.\n"</span>;</span><br><span class="line">    member = i;</span><br><span class="line">    }</span><br><span class="line">    <span class="built_in">foo</span>(<span class="type">const</span> FOO&amp; other) { cout &lt;&lt; <span class="string">"Copy constructing.\n"</span>;</span><br><span class="line">    member = other.member;</span><br><span class="line">    } &nbsp; &nbsp; </span><br><span class="line">    ~<span class="built_in">foo</span>() { </span><br><span class="line">      cout &lt;&lt; <span class="string">"Destructing.\n"</span>;&nbsp;</span><br><span class="line">      }</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">()</span> </span>{</span><br><span class="line">      <span class="keyword">return</span> member;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> member;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">(foo obj)</span> </span>{</span><br><span class="line">  cout &lt;&lt; obt.<span class="built_in">get</span>() &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function">foo <span class="title">get_foo</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="type">int</span> value;</span><br><span class="line">  cout &lt;&lt; <span class="string">"Input an integer: "</span>;</span><br><span class="line">  cin &gt;&gt; value;</span><br><span class="line">  <span class="function">foo <span class="title">obj</span><span class="params">(value)</span></span>;</span><br><span class="line">  <span class="keyword">return</span> obj;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="function">foo <span class="title">obj1</span><span class="params">(<span class="number">15</span>)</span></span>;</span><br><span class="line">  foo obj2 = obj1;</span><br><span class="line">  <span class="built_in">display</span>(obj2);</span><br><span class="line">  obj2 = <span class="built_in">get_foo</span>();</span><br><span class="line">  <span class="built_in">display</span>(obj2);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (<span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p><span style="color:#138DE9;">返回：</span><a href="/2023/05/28/C-note-5/#隐式调用复制构造">隐式调用复制构造</a></p>
 <h2 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h2><p><span style="color:#138DE9;">返回：</span><a href="/2023/05/28/C-note-5/#复制策略：拷贝构造函数自定义">复制策略：拷贝构造函数自定义</a></p>
 

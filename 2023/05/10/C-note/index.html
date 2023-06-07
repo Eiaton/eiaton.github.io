@@ -255,9 +255,9 @@
         <section class="flex items-center gap-3 text-sm">
           <time>2023-06-01 22:10:28</time>
           <span class="text-gray-400">·</span>
-          <span>2 min</span>
+          <span>3 min</span>
           <span class="text-gray-400">·</span>
-          <span>587 words</span>
+          <span>982 words</span>
         </section>
       </div>
     </div>
@@ -318,69 +318,15 @@
 <li><p>为防止重复删除出错，最好删除后就把指针赋为空。</p>
 </li>
 </ul>
-<h2 id="动态创建变量-x2F-数组"><a href="#动态创建变量-x2F-数组" class="headerlink" title="动态创建变量/数组"></a>动态创建变量/数组</h2><h3 id="动态创建一个整型变量"><a href="#动态创建一个整型变量" class="headerlink" title="动态创建一个整型变量"></a>动态创建一个整型变量</h3><pre class="line-numbers language-c++"><code class="language-c++">int *p = new int;
-cin >> *p;
-delete p;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="动态创建一个整型数组"><a href="#动态创建一个整型数组" class="headerlink" title="动态创建一个整型数组"></a>动态创建一个整型数组</h3><pre class="line-numbers language-c++"><code class="language-c++">int *p;
-p = new int[length] {1, 2, 3};
-// 若没有初始化列表，则不确定值；若初始化列表长度不够，则自动补齐`0`
-for (int i = 0; i < length; i++) {
-  cout << p[i] << " ";
-}
-delete [] p;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="动态创建一个-string-数组"><a href="#动态创建一个-string-数组" class="headerlink" title="动态创建一个 string 数组"></a>动态创建一个 <code>string</code> 数组</h3><pre class="line-numbers language-c++"><code class="language-c++">int n = 3;
-string *p = new string[n] {
-  string(5, 'a'), string(4, 'b'), string(3, 'c')
-};
-// 由于将决定分配多少长度，`string`创建时必须初始化
-p[1][2] = 'f';
-// 初始化后可以更改
-for (int i = 0; i < n; i++) {
-  cout << p[i] << endl;
-}
-delete [] p;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="动态创建一个二维整型数组"><a href="#动态创建一个二维整型数组" class="headerlink" title="动态创建一个二维整型数组"></a>动态创建一个二维整型数组</h3><pre class="line-numbers language-c++"><code class="language-c++">int row;
-int col;
-cin >> row >> col;
-int **a;
-a = new int *[row];
-for (int i = 0; i < row; i++) {
-  a[i] = new int [col];
-}
-for (int i = 0; i < row; i++) {
-  for (int j = 0; j < col; j++) {
-    cin >> a[row][col];
-  }
-}
-for (int i = 0; i < row; i++) {
-  delete [] a[i];
-}
-delete [] a;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="动态创建变量-x2F-数组"><a href="#动态创建变量-x2F-数组" class="headerlink" title="动态创建变量/数组"></a>动态创建变量/数组</h2><h3 id="动态创建一个整型变量"><a href="#动态创建一个整型变量" class="headerlink" title="动态创建一个整型变量"></a>动态创建一个整型变量</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p = <span class="keyword">new</span> <span class="type">int</span>;</span><br><span class="line">cin &gt;&gt; *p;</span><br><span class="line"><span class="keyword">delete</span> p;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="动态创建一个整型数组"><a href="#动态创建一个整型数组" class="headerlink" title="动态创建一个整型数组"></a>动态创建一个整型数组</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p;</span><br><span class="line">p = <span class="keyword">new</span> <span class="type">int</span>[length] {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>};</span><br><span class="line"><span class="comment">// 若没有初始化列表，则不确定值；若初始化列表长度不够，则自动补齐`0`</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; length; i++) {</span><br><span class="line">  cout &lt;&lt; p[i] &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">delete</span> [] p;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="动态创建一个-string-数组"><a href="#动态创建一个-string-数组" class="headerlink" title="动态创建一个 string 数组"></a>动态创建一个 <code>string</code> 数组</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = <span class="number">3</span>;</span><br><span class="line">string *p = <span class="keyword">new</span> string[n] {</span><br><span class="line">  <span class="built_in">string</span>(<span class="number">5</span>, <span class="string">'a'</span>), <span class="built_in">string</span>(<span class="number">4</span>, <span class="string">'b'</span>), <span class="built_in">string</span>(<span class="number">3</span>, <span class="string">'c'</span>)</span><br><span class="line">};</span><br><span class="line"><span class="comment">// 由于将决定分配多少长度，`string`创建时必须初始化</span></span><br><span class="line">p[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">'f'</span>;</span><br><span class="line"><span class="comment">// 初始化后可以更改</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">  cout &lt;&lt; p[i] &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">delete</span> [] p;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="动态创建一个二维整型数组"><a href="#动态创建一个二维整型数组" class="headerlink" title="动态创建一个二维整型数组"></a>动态创建一个二维整型数组</h3><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> row;</span><br><span class="line"><span class="type">int</span> col;</span><br><span class="line">cin &gt;&gt; row &gt;&gt; col;</span><br><span class="line"><span class="type">int</span> **a;</span><br><span class="line">a = <span class="keyword">new</span> <span class="type">int</span> *[row];</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) {</span><br><span class="line">  a[i] = <span class="keyword">new</span> <span class="type">int</span> [col];</span><br><span class="line">}</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) {</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; col; j++) {</span><br><span class="line">    cin &gt;&gt; a[row][col];</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; row; i++) {</span><br><span class="line">  <span class="keyword">delete</span> [] a[i];</span><br><span class="line">}</span><br><span class="line"><span class="keyword">delete</span> [] a;</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h2><p>是指 <code>new</code> 的指针丢失导致占用内存无法释放</p>
 <ol>
-<li>指针赋值时<pre class="line-numbers language-c++"><code class="language-c++">int *p = new int(7);
-p = nullptr;
-// 内存泄漏
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>指针离开作用域时<pre class="line-numbers language-c++"><code class="language-c++">void fn() {
- int *p = new int(7);
-}
-// 内存泄露
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li>异常导致程序或函数终止<pre class="line-numbers language-c++"><code class="language-c++">void fn() {
- int *p = new int(7);
- g();
- delete p;
-}
-// 若 g() 抛出异常则内存泄漏
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
+<li>指针赋值时<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">7</span>);</span><br><span class="line">p = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="comment">// 内存泄漏</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>指针离开作用域时<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">()</span> </span>{</span><br><span class="line"> <span class="type">int</span> *p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">7</span>);</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 内存泄露</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>异常导致程序或函数终止<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">()</span> </span>{</span><br><span class="line"> <span class="type">int</span> *p = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">7</span>);</span><br><span class="line"> <span class="built_in">g</span>();</span><br><span class="line"> <span class="keyword">delete</span> p;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 若 g() 抛出异常则内存泄漏</span></span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 <h2 id="显式默认化函数定义-default"><a href="#显式默认化函数定义-default" class="headerlink" title="显式默认化函数定义 = default"></a>显式默认化函数定义 <code>= default</code></h2><p><strong>用于恢复函数的默认定义</strong></p>
 <p>当我们声明有参构造函数时，编译器就不会创建默认构造函数。为了使编译器创建<br>该默认构造函数，可以在函数声明后指定 <code>= default</code></p>
@@ -394,12 +340,7 @@ p = nullptr;
 </li>
 </ul>
 <p>例如：（有参时用前面的，无参时用默认，这时不能写A（）的实现）</p>
-<pre class="line-numbers language-c++"><code class="language-c++">public:
-  A(int x) {
-    cout << "constructed";
-  }
-  A() = default;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="built_in">A</span>(<span class="type">int</span> x) {</span><br><span class="line">    cout &lt;&lt; <span class="string">"constructed"</span>;</span><br><span class="line">  }</span><br><span class="line">  <span class="built_in">A</span>() = <span class="keyword">default</span>;</span><br></pre></td></tr></tbody></table></figure>
 
   </article>
   <!-- tag -->

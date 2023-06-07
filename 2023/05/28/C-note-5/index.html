@@ -257,7 +257,7 @@
           <span class="text-gray-400">·</span>
           <span>8 min</span>
           <span class="text-gray-400">·</span>
-          <span>2.2k words</span>
+          <span>2.3k words</span>
         </section>
       </div>
     </div>
@@ -318,8 +318,7 @@
 <p>为了<em>提升初始化性能</em>，<code>C++</code> 引入了默认成员初始化器和初始化器列表</p>
 </blockquote>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>与其他函数不同，构造函数除了有名字，参数列表和函数体之外，还可以有初始化器列表，初始化器列表以冒号开头，后跟一系列以逗号分隔的成员初始化器。</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token function">Date</span><span class="token punctuation">(</span><span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">year</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">month</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Date</span>(<span class="type">int</span> y, <span class="type">int</span> m) : <span class="built_in">year</span>(y), <span class="built_in">month</span>(m) {}</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><h4 id="必须使用初始化器列表的时候"><a href="#必须使用初始化器列表的时候" class="headerlink" title="必须使用初始化器列表的时候"></a>必须使用初始化器列表的时候</h4><p>除了性能问题之外，有些时候初始化器列表是不可或缺的.以下几种情况时必须使用初始化器列表：</p>
 <ol>
 <li><strong>常量成员</strong>，因为常量只能初始化不能赋值，所以必须放在初始化器列表里面</li>
@@ -327,41 +326,9 @@
 <li><strong>没有默认构造函数的类类型（class type）</strong>，因为使用初始化器列表<em>可以不必调用无参构造函数</em>来初始化，而是直接用其他构造函数初始化</li>
 </ol>
 <h4 id="成员变量声明的顺序"><a href="#成员变量声明的顺序" class="headerlink" title="成员变量声明的顺序"></a>成员变量声明的顺序</h4><p>成员是按照他们<em>在类中声明的顺序进行初始化的</em>，而不是按照他们在初始化器列表出现的顺序初始化的</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">i</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">j</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 先初始化i，后初始化j</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">foo</span>(<span class="type">int</span> x) : <span class="built_in">i</span>(x), <span class="built_in">j</span>(i) {}</span><br><span class="line"><span class="comment">// 先初始化i，后初始化j</span></span><br></pre></td></tr></tbody></table></figure>
 <p>一个好的习惯是，按照成员声明的顺序进行初始化</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/*member initialization*/</span>
-<span class="token keyword">struct</span> S <span class="token punctuation">{</span>
-
-  <span class="token keyword">int</span> n<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 非静态数据成员</span>
-  <span class="token keyword">int</span><span class="token operator">&amp;</span> r <span class="token operator">=</span> n<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 引用类型的非静态数据成员; =默认构造</span>
-  <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 带默认成员初始化器的非静态数据成员（C++11）</span>
-  string s<span class="token punctuation">{</span><span class="token string">'H'</span><span class="token punctuation">,</span><span class="token string">'C'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 带默认成员初始化器</span>
-
-  <span class="token keyword">struct</span> nestedS  <span class="token punctuation">{</span>
-    string s<span class="token punctuation">;</span>
-    <span class="token function">nestedS</span><span class="token punctuation">(</span>std<span class="token operator">::</span>string s <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">s</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span> d5<span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 具有嵌套类型的非静态数据成员</span>
- 
-  <span class="token keyword">const</span> <span class="token keyword">char</span> bit <span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 2 位的位域, const初始化</span>
-  
-  <span class="token function">S</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">n</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">bit</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">// " : n(7), bit(3)" 是初始化器列表; "{}" 是函数体</span>
-  <span class="token function">S</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token operator">:</span> n<span class="token punctuation">{</span>x<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token function">bit</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  S s<span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// 调用 S::S()</span>
-  S <span class="token function">s2</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 调用 S::S(int)</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*member initialization*/</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">S</span> {</span><br><span class="line"></span><br><span class="line">  <span class="type">int</span> n;</span><br><span class="line">  <span class="comment">// 非静态数据成员</span></span><br><span class="line">  <span class="type">int</span>&amp; r = n;</span><br><span class="line">  <span class="comment">// 引用类型的非静态数据成员; =默认构造</span></span><br><span class="line">  <span class="type">int</span> a[<span class="number">2</span>] = {<span class="number">1</span>, <span class="number">2</span>};</span><br><span class="line">  <span class="comment">// 带默认成员初始化器的非静态数据成员（C++11）</span></span><br><span class="line">  string s{<span class="string">'H'</span>,<span class="string">'C'</span>};</span><br><span class="line">  <span class="comment">// 带默认成员初始化器</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">struct</span> <span class="title class_">nestedS</span>  {</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">nestedS</span>(std::string s = <span class="string">"hello"</span>) : <span class="built_in">s</span>(s) {};</span><br><span class="line">  } d5;</span><br><span class="line">  <span class="comment">// 具有嵌套类型的非静态数据成员</span></span><br><span class="line"> </span><br><span class="line">  <span class="type">const</span> <span class="type">char</span> bit : <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// 2 位的位域, const初始化</span></span><br><span class="line">  </span><br><span class="line">  <span class="built_in">S</span>() : <span class="built_in">n</span>(<span class="number">7</span>), <span class="built_in">bit</span>(<span class="number">3</span>) {}</span><br><span class="line">  <span class="comment">// " : n(7), bit(3)" 是初始化器列表; "{}" 是函数体</span></span><br><span class="line">  <span class="built_in">S</span>(<span class="type">int</span> x) : n{x}, <span class="built_in">bit</span>(<span class="number">3</span>) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">  S s;      <span class="comment">// 调用 S::S()</span></span><br><span class="line">  <span class="function">S <span class="title">s2</span><span class="params">(<span class="number">10</span>)</span></span>; <span class="comment">// 调用 S::S(int)</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><h2 id="对象的内存布局"><a href="#对象的内存布局" class="headerlink" title="对象的内存布局"></a>对象的内存布局</h2><h3 id="C-内存格局见-post-link-C-note-4"><a href="#C-内存格局见-post-link-C-note-4" class="headerlink" title="C++内存格局见 {post_link C-note-4}"></a>C++内存格局见 {post_link C-note-4}</h3><ul>
 <li><p>date area 存放全局变量，静态数据和常量</p>
 </li>
@@ -392,29 +359,14 @@
 <li>高效率，高性能</li>
 </ol>
 <h2 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>在定义语句中用同类型的对象初始化另一个对象</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//假定 C 为已定义的类</span>
-C obj1<span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//调用 C 的（1）无参构造函数</span>
-C <span class="token function">obj1</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true">//调用 C 的有参（2）普通构造函数</span>
-<span class="token comment" spellcheck="true">//如无(1)(2)则调用默认构造函数</span>
-
-<span class="token comment" spellcheck="true">/*调用 C 的（3）拷贝构造函数用对象obj1初始化对象obj2。
-如果有为 C 类明确定义拷贝构造函数，将调用这个拷贝构造函数；
-如果没有为 C 类定义拷贝构造函数，将调用默认拷贝构造函数。*/</span>
-
-C <span class="token function">obj2</span><span class="token punctuation">(</span>obja<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//或</span>
-C obj2 <span class="token operator">=</span> obja <span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//两者等价（注意：不是赋值运算）</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假定 C 为已定义的类</span></span><br><span class="line">C obj1;       <span class="comment">//调用 C 的（1）无参构造函数</span></span><br><span class="line"><span class="function">C <span class="title">obj1</span><span class="params">(<span class="number">1</span>,<span class="number">2</span>)</span>    <span class="comment">//调用 C 的有参（2）普通构造函数</span></span></span><br><span class="line"><span class="function"><span class="comment">//如无(1)(2)则调用默认构造函数</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/*调用 C 的（3）拷贝构造函数用对象obj1初始化对象obj2。</span></span></span><br><span class="line"><span class="comment"><span class="function">如果有为 C 类明确定义拷贝构造函数，将调用这个拷贝构造函数；</span></span></span><br><span class="line"><span class="comment"><span class="function">如果没有为 C 类定义拷贝构造函数，将调用默认拷贝构造函数。*/</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">C <span class="title">obj2</span><span class="params">(obja)</span></span>;    <span class="comment">//或</span></span><br><span class="line">C obj2 = obja ;  <span class="comment">//两者等价（注意：不是赋值运算）</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><ul>
 <li>用类类型（class type）本身作为参数</li>
 <li>该参数传递方式为<strong>按引用传递</strong>，<em>避免在函数调用过程中生成形参副本</em>。</li>
-<li>该形参声明为 <code>const</code>，<em>以确保在拷贝构造函数中不修改实参的值</em></li>
+<li>该形参声明为 <code>const</code>，<em>以确保在拷贝构造函数中不修改实参的值</em><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C::<span class="built_in">C</span>(<span class="type">const</span> C&amp; obj);</span><br></pre></td></tr></tbody></table></figure>
+例如：<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">complex</span>(<span class="type">const</span> complex&amp; other);</span><br></pre></td></tr></tbody></table></figure>
+注：</li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp">C<span class="token operator">::</span><span class="token function">C</span><span class="token punctuation">(</span><span class="token keyword">const</span> C<span class="token operator">&amp;</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>例如：</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token function">complex</span><span class="token punctuation">(</span><span class="token keyword">const</span> complex<span class="token operator">&amp;</span> other<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>注：</p>
 <ol>
 <li>C::C(C&amp; obj) 不用 const 形式已过时。</li>
 <li>C::C(C&amp;&amp; obj) 形式称为移动构造函数（超纲）</li>
@@ -432,43 +384,16 @@ C obj2 <span class="token operator">=</span> obja <span class="token punctuation
 <h3 id="隐式调用复制构造"><a href="#隐式调用复制构造" class="headerlink" title="隐式调用复制构造"></a>隐式调用复制构造</h3><ol>
 <li><p>对象作为函数值参</p>
 <p>将一个对象作为实参，以按值调用方式传递给被调用的形参对象</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 假定C为已定义的类，obj为 C 类对象</span>
-<span class="token keyword">void</span> <span class="token function">fn</span><span class="token punctuation">(</span>C tmp<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
-          <span class="token operator">/</span>
-         <span class="token operator">/</span>
-        <span class="token operator">/</span>
-       <span class="token operator">/</span>
-      <span class="token operator">/</span>
-<span class="token function">fn</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 用obj初始化tmp，如果有 C 类明确定义拷贝构造函数，将调用其；如果没有，将调用缺省拷贝构造函数</span>
-<span class="token comment" spellcheck="true">// obj传递给fn函数，创建对象tmp时，调用 C 的拷贝构造函数用对象obj初始化对象tmp，tmp生存期结束时调用析构函数</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-<li><p>对象作为值从函数返回</p>
-<p>生成一个临时对象，作为函数的返回结果：</p>
-<p>当函数返回某一对象时，系统将自动创建一个临时对象来保存函数的返回值。当创建此临时对象时，调用拷贝构造函数；当函数调用表达式结束后，撤销该临时对象，调用析构函数</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">C <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  C t<span class="token punctuation">;</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  <span class="token keyword">return</span> t
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">// 假定C为已定义的类，obj为 C 类对象</span></span><br><span class="line">   <span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">(C tmp)</span> </span>{...}</span><br><span class="line">             /</span><br><span class="line">            /</span><br><span class="line">           /</span><br><span class="line">          /</span><br><span class="line">         /</span><br><span class="line">   <span class="built_in">fn</span>(obj);</span><br><span class="line">   <span class="comment">// 用obj初始化tmp，如果有 C 类明确定义拷贝构造函数，将调用其；如果没有，将调用缺省拷贝构造函数</span></span><br><span class="line">   <span class="comment">// obj传递给fn函数，创建对象tmp时，调用 C 的拷贝构造函数用对象obj初始化对象tmp，tmp生存期结束时调用析构函数</span></span><br><span class="line"><span class="number">2.</span> 对象作为值从函数返回</span><br><span class="line">   </span><br><span class="line">   生成一个临时对象，作为函数的返回结果：</span><br><span class="line"></span><br><span class="line">   当函数返回某一对象时，系统将自动创建一个临时对象来保存函数的返回值。当创建此临时对象时，调用拷贝构造函数；当函数调用表达式结束后，撤销该临时对象，调用析构函数</span><br><span class="line">   ```<span class="function">cpp</span></span><br><span class="line"><span class="function">   C <span class="title">fn</span><span class="params">()</span> </span>{</span><br><span class="line">     C t;</span><br><span class="line">     ...</span><br><span class="line">     <span class="keyword">return</span> t</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
 <p>则</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">tmp <span class="token operator">=</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tmp = <span class="built_in">fn</span>();</span><br></pre></td></tr></tbody></table></figure>
 <p>t -&gt; temp_object -&gt; tmp</p>
 </li>
 </ol>
 <ul>
-<li>编译优化：</li>
+<li>编译优化：  <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C <span class="title">fn</span><span class="params">()</span> </span>{</span><br><span class="line">  C tmp;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">return</span> tmp;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+  实际的gcc/g++会优化使得tmp和new C的地址是一样的</li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp">C <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  C tmp<span class="token punctuation">;</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  <span class="token keyword">return</span> tmp<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>  实际的gcc/g++会优化使得tmp和new C的地址是一样的</p>
 <h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><p><a href="/2023/05/29/Examples-for-C-note-5/#Example-1">Example 1</a></p>
 <h3 id="复制策略：拷贝构造函数自定义"><a href="#复制策略：拷贝构造函数自定义" class="headerlink" title="复制策略：拷贝构造函数自定义"></a>复制策略：拷贝构造函数自定义</h3><blockquote>
 <p>浅拷贝只复制成员指针的值，而不复制指向的对象实体，导致新旧对象成员指针指向同一块内存。但深拷贝要求成员指针指向的对象也要复制，新对象跟原对象的成员指针不会指向同一块内存，修改新对象不会改到原对象。</p>

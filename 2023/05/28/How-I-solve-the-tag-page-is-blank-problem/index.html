@@ -257,7 +257,7 @@
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>208 words</span>
+          <span>203 words</span>
         </section>
       </div>
     </div>
@@ -266,20 +266,9 @@
   <article class="post-content mt-10 prose dark:prose-invert post-content">
     <h1 id="创建-tags-页面时遇到的问题"><a href="#创建-tags-页面时遇到的问题" class="headerlink" title="创建 tags 页面时遇到的问题"></a>创建 tags 页面时遇到的问题</h1><h2 id="正常流程"><a href="#正常流程" class="headerlink" title="正常流程"></a>正常流程</h2><ol>
 <li><code>$ hexo new page "tags"</code></li>
-<li>编辑 <code>index.md</code> :</li>
+<li>编辑 <code>index.md</code> :  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">type: tags</span><br><span class="line">layout: tags</span><br></pre></td></tr></tbody></table></figure></li>
+<li>编辑主题配置文件 <code>nav</code>:  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  Posts: /archives</span><br><span class="line">  Categories: </span><br><span class="line">  Tags: /tags         # 新增</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
-<pre><code>title: tag
-type: tags
-layout: tags
-</code></pre>
-<ol start="3">
-<li>编辑主题配置文件 <code>nav</code>:</li>
-</ol>
-<pre><code>nav:
-  Posts: /archives
-  Categories: 
-  Tags: /tags         # 新增
-</code></pre>
 <h2 id="我的-tags-界面会"><a href="#我的-tags-界面会" class="headerlink" title="我的 tags 界面会"></a>我的 tags 界面会</h2><ul>
 <li>依旧显示 <code>Cannot GET /tags/</code></li>
 <li>正常打开但内容空白</li>
@@ -293,7 +282,7 @@ layout: tags
 <p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tags/test/">http://localhost:4000/tags/test/</a>‘ return true.</p>
 <p>if you enter ‘tag’ page by click link will show all tags.</p>
 <p>otherwise if you enter ‘tags’ by click post header link will show the single tag of this post.</p>
-<h2 id="how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this-title-tag-date-2019-06-09-09-56-49-tag-tag-layout-tag"><a href="#how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this-title-tag-date-2019-06-09-09-56-49-tag-tag-layout-tag" class="headerlink" title="how to add a tag page:1. hexo new page “tag”2. cd source/tag/index.md3. add layout pattern like this:title: tag date: 2019-06-09 09:56:49 tag: tag layout: tag"></a>how to add a tag page:<br>1. hexo new page “tag”<br>2. cd source/tag/index.md<br>3. add layout pattern like this:<br><code>title: tag date: 2019-06-09 09:56:49 tag: tag layout: tag</code></h2></blockquote>
+<h2 id="how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this"><a href="#how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this" class="headerlink" title="how to add a tag page:1. hexo new page “tag”2. cd source/tag/index.md3. add layout pattern like this:"></a>how to add a tag page:<br>1. hexo new page “tag”<br>2. cd source/tag/index.md<br>3. add layout pattern like this:<br><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">date: 2019-06-09 09:56:49</span><br><span class="line">tag: tag</span><br><span class="line">layout: tag</span><br></pre></td></tr></tbody></table></figure></h2></blockquote>
 </li>
 </ol>
 <p>方知要将 <code>tags</code> 改作 <code>tag</code> </p>

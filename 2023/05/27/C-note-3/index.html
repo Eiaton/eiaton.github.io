@@ -299,12 +299,7 @@
 </ul>
 <h1 id="数据抽象和类-Ⅱ"><a href="#数据抽象和类-Ⅱ" class="headerlink" title="数据抽象和类 Ⅱ"></a>数据抽象和类 Ⅱ</h1><h2 id="C-新增"><a href="#C-新增" class="headerlink" title="C++ 新增"></a><code>C++</code> 新增</h2><h3 id="新类型：bool"><a href="#新类型：bool" class="headerlink" title="新类型：bool"></a>新类型：<code>bool</code></h3><p><code>C</code> ：</p>
 <ul>
-<li>没有 bool 类型</li>
-</ul>
-<pre class="line-numbers language-C"><code class="language-C">#define true = 1
-#define false = 0
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ul>
+<li>没有 bool 类型<figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> true = 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> false = 0</span></span><br></pre></td></tr></tbody></table></figure></li>
 <li>C99 定义了 <code>_Bool</code> 类型，并通过 <code>stdbool.h</code> 实现与 <code>C++</code> 兼容</li>
 </ul>
 <p><code>C++</code>：</p>
@@ -312,13 +307,10 @@
 <li>定义了三个关键字：<code>bool</code>，<code>true</code>，<code>false</code></li>
 <li>当显式（例 (bool)7）或隐式（例 bool b = 7；）转为 <code>bool</code> 类型时<ul>
 <li><code>0</code> 值转为 <code>false</code></li>
-<li>非 <code>0</code> 值转为 <code>true</code></li>
+<li>非 <code>0</code> 值转为 <code>true</code><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; <span class="literal">true</span> <span class="comment">//输出 1</span></span><br><span class="line">cout &lt;&lt; <span class="literal">false</span> <span class="comment">//输出 0</span></span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp">cout <span class="token operator">&lt;&lt;</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">//输出 1</span>
-cout <span class="token operator">&lt;&lt;</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">//输出 0</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="形参：void"><a href="#形参：void" class="headerlink" title="形参：void"></a>形参：<code>void</code></h3><p><code>C</code>：</p>
 <ul>
 <li>fn(); 没有声明形参表示函数的形参不确定</li>
@@ -327,45 +319,15 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token boolean">fa
 <p><code>C++</code>：</p>
 <ul>
 <li>fn(); <strong>等价于</strong> fn(void);</li>
-<li>使用 <code>…</code> 表示可变参数</li>
+<li>使用 <code>…</code> 表示可变参数<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">printx</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* fmt, ...)</span></span>;</span><br><span class="line"><span class="comment">// 能以一个或多个实参调用：</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printx</span>(<span class="string">"hello world"</span>);</span><br><span class="line"><span class="built_in">printx</span>(<span class="string">"a = %d b = %d"</span>, a, b);</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">printx</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> fmt<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 能以一个或多个实参调用：</span>
-
-<span class="token function">printx</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printx</span><span class="token punctuation">(</span><span class="token string">"a = %d b = %d"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h2><h3 id="函数重载"><a href="#函数重载" class="headerlink" title="函数重载"></a>函数重载</h3><p>背景：</p>
 <ul>
 <li>在开发中，需要的函数功能类似，但参数数量或类型不同<br><code>C</code> 的解决：</li>
 <li>必须申明两个函数（不重名）<br><code>C++</code> 的解决：</li>
-<li>声明同名函数，但参数类型不同：</li>
+<li>声明同名函数，但参数类型不同：<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>&amp; a, <span class="type">int</span>&amp; b)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">double</span>&amp; a, <span class="type">double</span>&amp; b)</span></span>;</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="auto-用于函数重载"><a href="#auto-用于函数重载" class="headerlink" title="auto 用于函数重载"></a><code>auto</code> 用于函数重载</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">auto</span> temp <span class="token operator">=</span> a<span class="token punctuation">;</span>
-  a <span class="token operator">=</span> b<span class="token punctuation">;</span>
-  b <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">auto</span> temp <span class="token operator">=</span> a<span class="token punctuation">;</span>
-  a <span class="token operator">=</span> b<span class="token punctuation">;</span>
-  b <span class="token operator">=</span> temp<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-  <span class="token keyword">double</span> p <span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">;</span>
-  <span class="token keyword">double</span> q <span class="token operator">=</span> <span class="token number">1.1</span><span class="token punctuation">;</span>
-  <span class="token function">swap</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">swap</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="auto-用于函数重载"><a href="#auto-用于函数重载" class="headerlink" title="auto 用于函数重载"></a><code>auto</code> 用于函数重载</h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>&amp; a, <span class="type">int</span>&amp; b)</span> </span>{</span><br><span class="line">  <span class="keyword">auto</span> temp = a;</span><br><span class="line">  a = b;</span><br><span class="line">  b = temp;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">double</span>&amp; a, <span class="type">double</span>&amp; b)</span> </span>{</span><br><span class="line">  <span class="keyword">auto</span> temp = a;</span><br><span class="line">  a = b;</span><br><span class="line">  b = temp;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="type">int</span> j = <span class="number">1</span>;</span><br><span class="line">  <span class="type">double</span> p =<span class="number">0.1</span>;</span><br><span class="line">  <span class="type">double</span> q = <span class="number">1.1</span>;</span><br><span class="line">  <span class="built_in">swap</span>(i, j);</span><br><span class="line">  <span class="built_in">swap</span>(p, q);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>让编译推导决定使用哪个函数</p>
 <p>事实上，编译器会将函数名、参数数量、参数类型编译为唯一的内部函数名</p>
 <ul>
@@ -381,22 +343,10 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token boolean">fa
 <ul>
 <li>默认参数只能定义在参数<strong>右边</strong></li>
 <li>一个声明和实现可匹配多个函数<ul>
-<li><code>fn()</code> <code>fn(int)</code> <code>fun(int, float)</code> <code>fn(int, float, char)</code></li>
+<li><code>fn()</code> <code>fn(int)</code> <code>fun(int, float)</code> <code>fn(int, float, char)</code><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">(<span class="type">int</span> n = <span class="number">1</span>, <span class="type">float</span> b = <span class="number">1.2</span>, <span class="type">char</span> c = <span class="string">'@'</span>)</span></span>; <span class="comment">//实现</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fn</span><span class="params">(<span class="type">int</span> n, <span class="type">float</span> b, <span class="type">char</span> c)</span></span>{</span><br><span class="line">&nbsp; &nbsp; cout &lt;&lt; n &lt;&lt; <span class="string">", "</span> &lt;&lt; b &lt;&lt; <span class="string">", "</span> &lt;&lt; c &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">&nbsp; &nbsp; <span class="built_in">fn</span>();             <span class="comment">//func(1,1.2,'@')</span></span><br><span class="line">&nbsp; &nbsp; <span class="built_in">fn</span>(<span class="number">10</span>);           <span class="comment">//func(10,1.2,'@')</span></span><br><span class="line">&nbsp; &nbsp; <span class="built_in">fn</span>(<span class="number">20</span>, <span class="number">9.8</span>);      <span class="comment">//func(20,9.8,'@')</span></span><br><span class="line">&nbsp; &nbsp; <span class="built_in">fn</span>(<span class="number">30</span>, <span class="number">3.5</span>, <span class="string">'#'</span>); <span class="comment">//func(30,3.5,'#')</span></span><br><span class="line">&nbsp; &nbsp; <span class="keyword">return</span> (<span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 </li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">float</span> b <span class="token operator">=</span> <span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token string">'@'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//实现</span>
-<span class="token keyword">void</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">float</span> b<span class="token punctuation">,</span> <span class="token keyword">char</span> c<span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> cout <span class="token operator">&lt;&lt;</span> n <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span> <span class="token operator">&lt;&lt;</span> b <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span> <span class="token operator">&lt;&lt;</span> c <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token comment" spellcheck="true">//func(1,1.2,'@')</span>
-<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//func(10,1.2,'@')</span>
-<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">9.8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">//func(20,9.8,'@')</span>
-<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">3.5</span><span class="token punctuation">,</span> <span class="token string">'#'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//func(30,3.5,'#')</span>
-<span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="字符串类型：string"><a href="#字符串类型：string" class="headerlink" title="字符串类型：string"></a>字符串类型：<code>string</code></h3><p><code>C</code>：</p>
 <ul>
 <li>C 字符串是 <code>char*</code> 类型，是以 <code>'\0'</code> 字符结束的字符数组。</li>
@@ -405,13 +355,8 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token boolean">fa
 <p><code>C++</code>：</p>
 <ul>
 <li><code>string</code> 是类</li>
-<li>作为区别，用 <code>cstring</code> 称 <code>C</code> 字符数组</li>
+<li>作为区别，用 <code>cstring</code> 称 <code>C</code> 字符数组<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string s1; &nbsp; <span class="comment">// 默认构造</span></span><br><span class="line">string s2 = <span class="string">"c plus plus"</span>; <span class="comment">// 用cstring构造</span></span><br><span class="line">string s3 = s2; <span class="comment">// 用同类对象构造</span></span><br><span class="line"><span class="function">string <span class="title">s4</span> <span class="params">(<span class="number">5</span>, <span class="string">'s'</span>)</span></span>; <span class="comment">// 用int,char作为参数构造</span></span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp">  string s1<span class="token punctuation">;</span> <span class="token operator">&amp;</span>nbsp<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 默认构造</span>
-  string s2 <span class="token operator">=</span> <span class="token string">"c plus plus"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 用cstring构造</span>
-  string s3 <span class="token operator">=</span> s2<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 用同类对象构造</span>
-  string <span class="token function">s4</span> <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 用int,char作为参数构造</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><h3 id="公有成员"><a href="#公有成员" class="headerlink" title="公有成员"></a>公有成员</h3><ul>
 <li><p>公有成员在客户端可以任意访问。</p>
 </li>
@@ -434,22 +379,8 @@ cout <span class="token operator">&lt;&lt;</span> <span class="token boolean">fa
 <li><p>如果用户没有自定义构造函数，则编译会<em>自动生成一个默认构造函数</em></p>
 </li>
 <li><p><code>C++11</code> 以后建议申明时写含参形式</p>
-</li>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">date</span> {</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> year;</span><br><span class="line">    <span class="type">int</span> month;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">date</span>(<span class="type">int</span> = <span class="number">2023</span>, <span class="type">int</span> = <span class="number">1</span>);</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line">date::<span class="built_in">date</span>(<span class="type">int</span> y, <span class="type">int</span> m) {</span><br><span class="line">  year = y;</span><br><span class="line">  month = m;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">date</span> <span class="token punctuation">{</span>
-  <span class="token keyword">private</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> year<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> month<span class="token punctuation">;</span>
-
-  <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token function">date</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">=</span> <span class="token number">2023</span><span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-
-date<span class="token operator">::</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  year <span class="token operator">=</span> y<span class="token punctuation">;</span>
-  month <span class="token operator">=</span> m<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="含参构造函数"><a href="#含参构造函数" class="headerlink" title="含参构造函数"></a>含参构造函数</h3><ul>
 <li><p>构造函数也可以带有参数。这样在创建对象时就可使用参数构造对象。</p>
 </li>
@@ -476,45 +407,13 @@ date<span class="token operator">::</span><span class="token function">date</spa
 <li><code>static</code> 成员不能使用 <code>this</code>，应使用 <code>::</code>。</li>
 <li><code>-&gt;</code> 是指针取成员运算</li>
 </ul>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">box</span> <span class="token punctuation">{</span> 
-  <span class="token keyword">public</span><span class="token operator">:</span> 
-  <span class="token comment" spellcheck="true">// 构造函数定义 </span>
-    <span class="token function">box</span><span class="token punctuation">(</span><span class="token keyword">double</span> l <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token keyword">double</span> w <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">,</span> <span class="token keyword">double</span> h <span class="token operator">=</span> <span class="token number">2.0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-      cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Constructor called."</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> 
-      length <span class="token operator">=</span> l<span class="token punctuation">;</span> 
-      width <span class="token operator">=</span> w<span class="token punctuation">;</span> 
-      height <span class="token operator">=</span> h<span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
-    <span class="token keyword">double</span> <span class="token function">volume</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-      <span class="token keyword">return</span> length <span class="token operator">*</span> width <span class="token operator">*</span> height<span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
-    <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Box box<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-      <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">Volume</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> box<span class="token punctuation">.</span><span class="token function">Volume</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-    <span class="token punctuation">}</span> 
-  
-  <span class="token keyword">private</span><span class="token operator">:</span> 
-    <span class="token keyword">double</span> length<span class="token punctuation">;</span>
-    <span class="token keyword">double</span> width<span class="token punctuation">;</span>
-    <span class="token keyword">double</span> height<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-  box <span class="token function">box1</span><span class="token punctuation">(</span><span class="token number">3.3</span><span class="token punctuation">,</span> <span class="token number">1.2</span><span class="token punctuation">,</span> <span class="token number">1.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-  <span class="token comment" spellcheck="true">// Declare box1 </span>
-  box <span class="token function">box2</span><span class="token punctuation">(</span><span class="token number">8.5</span><span class="token punctuation">,</span> <span class="token number">6.0</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Declare box2 </span>
-  <span class="token keyword">if</span><span class="token punctuation">(</span>box1<span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>box2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"box2 is smaller than box1"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> 
-  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> 
-    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"box2 is equal to or larger than box1"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> 
-  <span class="token punctuation">}</span> 
-  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">box</span> { </span><br><span class="line">  <span class="keyword">public</span>: </span><br><span class="line">  <span class="comment">// 构造函数定义 </span></span><br><span class="line">    <span class="built_in">box</span>(<span class="type">double</span> l = <span class="number">2.0</span>, <span class="type">double</span> w = <span class="number">2.0</span>, <span class="type">double</span> h = <span class="number">2.0</span>) { </span><br><span class="line">      cout &lt;&lt; <span class="string">"Constructor called."</span> &lt;&lt; endl; </span><br><span class="line">      length = l; </span><br><span class="line">      width = w; </span><br><span class="line">      height = h; </span><br><span class="line">    } </span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">volume</span><span class="params">()</span> </span>{ </span><br><span class="line">      <span class="keyword">return</span> length * width * height; </span><br><span class="line">    } </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">compare</span><span class="params">(Box box)</span> </span>{ </span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>-&gt;<span class="built_in">Volume</span>() &gt; box.<span class="built_in">Volume</span>(); </span><br><span class="line">    } </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">private</span>: </span><br><span class="line">    <span class="type">double</span> length;</span><br><span class="line">    <span class="type">double</span> width;</span><br><span class="line">    <span class="type">double</span> height;</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span>{ </span><br><span class="line">  <span class="function">box <span class="title">box1</span><span class="params">(<span class="number">3.3</span>, <span class="number">1.2</span>, <span class="number">1.5</span>)</span></span>; </span><br><span class="line">  <span class="comment">// Declare box1 </span></span><br><span class="line">  <span class="function">box <span class="title">box2</span><span class="params">(<span class="number">8.5</span>, <span class="number">6.0</span>, <span class="number">2.0</span>)</span></span>; <span class="comment">// Declare box2 </span></span><br><span class="line">  <span class="keyword">if</span>(box1.<span class="built_in">compare</span>(box2)) { </span><br><span class="line">    cout &lt;&lt; <span class="string">"box2 is smaller than box1"</span> &lt;&lt; endl; </span><br><span class="line">  } <span class="keyword">else</span> { </span><br><span class="line">    cout &lt;&lt; <span class="string">"box2 is equal to or larger than box1"</span> &lt;&lt; endl; </span><br><span class="line">  } </span><br><span class="line">  <span class="keyword">return</span> (<span class="number">0</span>); </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>Output:</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp">Constructor called<span class="token punctuation">.</span> 
-Constructor called<span class="token punctuation">.</span> 
-Box2 is equal to <span class="token operator">or</span> larger than Box1 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Constructor called. </span><br><span class="line">Constructor called. </span><br><span class="line">Box2 is equal to <span class="keyword">or</span> larger than Box1 </span><br></pre></td></tr></tbody></table></figure>
+
+
+
 
   </article>
   <!-- tag -->
