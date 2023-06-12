@@ -27,7 +27,7 @@
 
 
 
-<title>How I solve the &#39;tag page is blank&#39; problem | Sleep With Me</title>
+<title>Category: Polymorphism | Sleep With Me</title>
 
 
 
@@ -169,7 +169,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        How I solve the 'tag page is blank' problem
+        
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -228,198 +228,49 @@
 </div>
 
   <main class="p-12">
-    <!-- css -->
-
-<link rel="stylesheet" href="/lib/fancybox/fancybox.min.css">
+    
 
 
-<link rel="stylesheet" href="/lib/tocbot/tocbot.min.css">
-
-<!-- toc -->
-
-  <!-- tocbot -->
-<nav class="post-toc toc text-sm w-48 relative top-32 right-0 opacity-70 hidden lg:block" style="position: fixed !important;"></nav>
-
-
-<section class="px-6 max-w-prose mx-auto md:px-0">
-  <!-- header -->
-  <header class="overflow-hidden pt-6 pb-6 md:pt-12">
-    <div class="pt-4 md:pt-6">
-      <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        How I solve the 'tag page is blank' problem
-      </h1>
-      <p class="mb-6">
-        
-      </p>
-      <div>
-        <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 20:44:57</time>
-          <span class="text-gray-400">·</span>
-          <span>1 min</span>
-          <span class="text-gray-400">·</span>
-          <span>203 words</span>
-        </section>
+<div class="">
+  <h2>Categories-Polymorphism</h2>
+</div>
+<section class="px-6 max-w-prose mx-auto gap-12 grid grid-cols-1">
+  <div class="flex flex-col h-48 items-center justify-center">
+    <h1 class="site-title text-4xl leading-relaxed">
+      Sleep With Me
+    </h1>
+    <p class="text-gray-500 mt-2">
+      If you want, study with me, also.
+    </p>
+  </div>
+  
+  
+    
+    
+      <div class="relative pointer-events-none">
+        <span class="text-9xl opacity-10 absolute -left-11 -top-6 font-bold">2023</span>
       </div>
-    </div>
-  </header>
-  <!-- content -->
-  <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="创建-tags-页面时遇到的问题"><a href="#创建-tags-页面时遇到的问题" class="headerlink" title="创建 tags 页面时遇到的问题"></a>创建 tags 页面时遇到的问题</h1><h2 id="正常流程"><a href="#正常流程" class="headerlink" title="正常流程"></a>正常流程</h2><ol>
-<li><code>$ hexo new page "tags"</code></li>
-<li>编辑 <code>index.md</code> :  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">type: tags</span><br><span class="line">layout: tags</span><br></pre></td></tr></tbody></table></figure></li>
-<li>编辑主题配置文件 <code>nav</code>:  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  Posts: /archives</span><br><span class="line">  Categories: </span><br><span class="line">  Tags: /tags         # 新增</span><br></pre></td></tr></tbody></table></figure></li>
-</ol>
-<h2 id="我的-tags-界面会"><a href="#我的-tags-界面会" class="headerlink" title="我的 tags 界面会"></a>我的 tags 界面会</h2><ul>
-<li>依旧显示 <code>Cannot GET /tags/</code></li>
-<li>正常打开但内容空白</li>
-</ul>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
-<li>对于显示 <code>Cannot GET /tags/</code>，检查是否写了 <code>layout: tag</code> </li>
-<li>对于内容空白，查阅 <code>themes/maple/layout/tag.ejs</code>，发现作者写道：<blockquote>
-<hr>
-<p>this page will judge whether current page is ‘tag.’</p>
-<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tag/">http://localhost:4000/tag/</a>‘ return false.</p>
-<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tags/test/">http://localhost:4000/tags/test/</a>‘ return true.</p>
-<p>if you enter ‘tag’ page by click link will show all tags.</p>
-<p>otherwise if you enter ‘tags’ by click post header link will show the single tag of this post.</p>
-<h2 id="how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this"><a href="#how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this" class="headerlink" title="how to add a tag page:1. hexo new page “tag”2. cd source/tag/index.md3. add layout pattern like this:"></a>how to add a tag page:<br>1. hexo new page “tag”<br>2. cd source/tag/index.md<br>3. add layout pattern like this:<br><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">date: 2019-06-09 09:56:49</span><br><span class="line">tag: tag</span><br><span class="line">layout: tag</span><br></pre></td></tr></tbody></table></figure></h2></blockquote>
-</li>
-</ol>
-<p>方知要将 <code>tags</code> 改作 <code>tag</code> </p>
-<p>对于 <code>category</code> 也是同理</p>
-
-  </article>
-  <!-- tag -->
-  <div class="mt-12 pt-6 border-t border-gray-200">
     
-      
-        <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/HEXO/">HEXO</a>
-        </span>
-      
-    
-  </div>
-  <!-- prev and next -->
-  <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
-    <div>
-      
-        <a href="/2023/05/28/C-note-5/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          C++ note (5)
-        </a>
-      
-    </div>
-    <div>
-      
-        <a href="/2023/05/27/How-to-use-tags-plugin/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          How to use tags plugin
-          <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
-        </a>
-      
-    </div>
-  </div>
-  <!-- comment -->
-  <div class="article-comments mt-12">
-    
-
-  </div>
+    <a href="/2023/06/12/C-note-11/">
+      <header>
+        <h2 class="font-bold text-xl">
+          C++ note (11)
+        </h2>
+      </header>
+      <section class="text-gray-400 my-1 text-sm time">
+        <p class="line-clamp-4">
+          
+        </p>
+        <p class="line-clamp-4">
+          Jun 12
+          ·
+          1 min
+        </p>
+      </section>
+    </a>
+  
 </section>
-<!-- js inspect -->
 
-<script src="/lib/clipboard.min.js"></script>
-
-
-<script async src="https://cdn.staticfile.org/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    "HTML-CSS": {
-        preferredFont: "TeX",
-        availableFonts: ["STIX","TeX"],
-        linebreaks: { automatic:true },
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-    },
-    tex2jax: {
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-        processEscapes: true,
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-        Macros: { href: "{}" }
-    },
-    messageStyle: "none"
-  });
-</script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-  });
-</script>
-
-
-
-<script src="https://cdn.staticfile.org/mermaid/9.4.3/mermaid.min.js"></script>
-<script>
-  $(document).ready(() => {
-    const maraidConfig = {
-      theme: "default",
-      logLevel: 3,
-      flowchart: { curve: "linear" },
-      gantt: { axisFormat: "%m/%d/%Y" },
-      sequence: { actorMargin: 50 },
-    };
-    mermaid.initialize(maraidConfig);
-  });
-</script>
-
-
-
-<script src="/lib/fancybox/fancybox.umd.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-    $('.post-content').each(function(i){
-      $(this).find('img').each(function(){
-        if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
-        var alt = this.alt;
-        if (alt) $(this).after('<span class="fancybox-alt">' + alt + '</span>');
-        $(this).wrap('<a class="fancybox-img" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
-      });
-      $(this).find('.fancybox').each(function(){
-        $(this).attr('rel', 'article' + i);
-      });
-    });
-
-    Fancybox.bind('[data-fancybox="gallery"]', {
-        // options
-    })
-  })
-</script>
-
-<!-- tocbot begin -->
-
-<script src="/lib/tocbot/tocbot.min.js"></script>
-
-<script>
-  $(document).ready(() => {
-      tocbot.init({
-        // Where to render the table of contents.
-        tocSelector: '.post-toc',
-        // Where to grab the headings to build the table of contents.
-        contentSelector: '.post-content',
-        // Which headings to grab inside of the contentSelector element.
-        headingSelector: 'h1, h2, h3',
-        // For headings inside relative or absolute positioned containers within content.
-        hasInnerContainers: true,
-    });
-  })
-</script>
-<!-- tocbot end -->
 
 
   </main>

@@ -153,11 +153,11 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-vs.css" type="text/css">
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-vs.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><script src="/js/prism.js"></script>
-<script src="/js/prism-line-numbers.min.js"></script></head>
+<script src="/js/prism-line-numbers.min.js"></script>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 <body class="font-sans bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-200">
   <header class="fixed w-full px-5 py-1 z-10 backdrop-blur-xl backdrop-saturate-150 border-b border-black/5">
   <div class="max-auto">
@@ -253,11 +253,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-10 18:59:46</time>
+          <time>2023-06-12 21:57:28</time>
           <span class="text-gray-400">·</span>
-          <span>1 min</span>
+          <span>5 min</span>
           <span class="text-gray-400">·</span>
-          <span>40 words</span>
+          <span>1k words</span>
         </section>
       </div>
     </div>
@@ -266,13 +266,110 @@
   <article class="post-content mt-10 prose dark:prose-invert post-content">
     <ul>
 <li><a href="#%E7%BB%A7%E6%89%BF%E5%92%8C%E6%B4%BE%E7%94%9F-%E2%85%B2">继承和派生 Ⅲ</a><ul>
-<li><a href="#%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7">类型兼容性</a></li>
-<li><a href="#%E7%B1%BB%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">类的类型转换</a></li>
-<li><a href="#%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF">多重继承</a></li>
+<li><a href="#%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7">类型兼容性</a><ul>
+<li><a href="#%E4%B8%BE%E4%BE%8B">举例</a></li>
+</ul>
+</li>
+<li><a href="#%E7%B1%BB%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2">类的类型转换</a><ul>
+<li><a href="#upcasting-and-downcasting">Upcasting and Downcasting</a></li>
+<li><a href="#dynamic-casting">Dynamic Casting</a></li>
+<li><a href="#casts">Casts</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF">多重继承</a><ul>
+<li><a href="#c%E6%94%AF%E6%8C%81%E7%9A%84%E5%A4%9A%E7%BB%A7%E6%89%BF">C++支持的多继承</a></li>
 </ul>
 </li>
 </ul>
-<h1 id="继承和派生-Ⅲ"><a href="#继承和派生-Ⅲ" class="headerlink" title="继承和派生 Ⅲ"></a>继承和派生 Ⅲ</h1><h2 id="类型兼容性"><a href="#类型兼容性" class="headerlink" title="类型兼容性"></a>类型兼容性</h2><h2 id="类的类型转换"><a href="#类的类型转换" class="headerlink" title="类的类型转换"></a>类的类型转换</h2><h2 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h2>
+</li>
+</ul>
+<h1 id="继承和派生-Ⅲ"><a href="#继承和派生-Ⅲ" class="headerlink" title="继承和派生 Ⅲ"></a>继承和派生 Ⅲ</h1><h2 id="类型兼容性"><a href="#类型兼容性" class="headerlink" title="类型兼容性"></a>类型兼容性</h2><p>赋值运算的类型兼容性</p>
+<ul>
+<li><p>可以将后代类的对象赋值给祖先类对象，反之不可。</p>
+</li>
+<li><p>每个派生类对象包含一个基类部分，这意味着可以将派生类对象当作基类对象使用。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">     ---------    ---------</span><br><span class="line">     |   i   | &lt;- |   i   |</span><br><span class="line">obj1 |   j   | &lt;- |   j   |</span><br><span class="line">     | x_tmp | &lt;- | x_tmp |</span><br><span class="line">     ---------    |nmember|</span><br><span class="line">                  ---------</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">base obj1;</span><br><span class="line">y1   obj2;</span><br><span class="line">obj1 = obj2; <span class="comment">// 把obj2中基类部分的内容赋给obj1</span></span><br><span class="line">obj2 = obj1; <span class="comment">// wrong</span></span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>y1继承base</p>
+</blockquote>
+</li>
+<li><p>指向基类对象的指针也可指向公有派生类对象</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">base *p;</span><br><span class="line">y1   *p;</span><br><span class="line">p = &amp;obj1; <span class="comment">// ok</span></span><br><span class="line">p1= &amp;obj1; <span class="comment">// wrong</span></span><br><span class="line">p = &amp;obj2; <span class="comment">// ok</span></span><br><span class="line">p1= &amp;obj2; <span class="comment">// ok</span></span><br><span class="line">p = p1;    <span class="comment">// ok</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li><p><span style="color:orange">只有公有派生类才能兼容基类类型</span>（上述规则只适用于共有派生）</p>
+</li>
+</ul>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.h</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">base</span> {</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">d1</span> : <span class="keyword">public</span> base {</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">d2</span> : <span class="keyword">public</span> d1 {</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">()</span></span>;</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">"b.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">base::display</span><span class="params">()</span> </span>{</span><br><span class="line">  cout &lt;&lt; <span class="string">"base::display()"</span> &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">d1::display</span><span class="params">()</span> </span>{</span><br><span class="line">  cout &lt;&lt; <span class="string">"d1::display()"</span> &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">d2::display</span><span class="params">()</span> </span>{</span><br><span class="line">  cout &lt;&lt; <span class="string">"d2::display()"</span> &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">fun</span><span class="params">(base *ptr)</span> </span>{</span><br><span class="line">  ptr-&gt;<span class="built_in">display</span>();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">  base b; <span class="comment">// 声明base类对象</span></span><br><span class="line">  d1 d1;  <span class="comment">// 声明d1类对象</span></span><br><span class="line">  d2 d2;  <span class="comment">// 声明d2类对象</span></span><br><span class="line">  base *p;<span class="comment">// 声明base类指针</span></span><br><span class="line">  p = &amp;b;   <span class="comment">// base类指针指向base类对象</span></span><br><span class="line">  <span class="built_in">fun</span>(p);</span><br><span class="line">  p = &amp;d1;  <span class="comment">//base类指针指向d1类对象</span></span><br><span class="line">  <span class="built_in">fun</span>(p);</span><br><span class="line">  p = &amp;d2;  <span class="comment">//base类指针指向d2类对象</span></span><br><span class="line">  <span class="built_in">fun</span>(p);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">base::display()</span><br><span class="line">base::display()</span><br><span class="line">base::display()</span><br><span class="line"></span><br><span class="line">// 解释：形参是指针类型，其基类名为base</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="类的类型转换"><a href="#类的类型转换" class="headerlink" title="类的类型转换"></a>类的类型转换</h2><h3 id="Upcasting-and-Downcasting"><a href="#Upcasting-and-Downcasting" class="headerlink" title="Upcasting and Downcasting"></a>Upcasting and Downcasting</h3><p>Upcasting（向 上/基 类型转换）</p>
+<ul>
+<li>Assigning a pointer of a derived class type to a pointer of its base class type. Done implicitly<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">geometricObj *p = <span class="keyword">new</span> <span class="built_in">circle</span>(<span class="number">1</span>);</span><br><span class="line">circle *p1 = <span class="keyword">new</span> <span class="built_in">circle</span>(<span class="number">2</span>);</span><br><span class="line">p = p1;</span><br></pre></td></tr></tbody></table></figure>
+Downcasting（向 下/派生 类型转换）</li>
+<li>Assigning a pointer of a base class type to a pointer of its derived class type</li>
+<li>Done explicitly using dynamic_cast<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1 = dynamic <span class="built_in">cast</span>&lt;circle *&gt;(p);</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h3 id="Dynamic-Casting"><a href="#Dynamic-Casting" class="headerlink" title="Dynamic Casting"></a>Dynamic Casting</h3><p>The display function ：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A function for displaying a geometric object</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">(Figure *p)</span> </span>{</span><br><span class="line">  cout &lt;&lt; <span class="string">"The area is "</span> &lt;&lt; p-&gt;<span class="built_in">get_area</span>() &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A function for displaying a geometric object</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">display</span><span class="params">(Figure *p)</span> </span>{</span><br><span class="line">  Circle* circlePtr =  p;<span class="comment">//?</span></span><br><span class="line">  cout &lt;&lt; <span class="string">"The area is "</span> &lt;&lt; circlePtr -&gt;<span class="built_in">get_area</span>() &lt;&lt; endl;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Casts"><a href="#Casts" class="headerlink" title="Casts"></a>Casts</h3><p>static_cast</p>
+<ul>
+<li>Used to convert one data type to another and hands all reasonable casts<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">average = (<span class="type">float</span>) hits / (<span class="type">float</span>) at_bats;</span><br><span class="line">average = <span class="built_in">static_cast</span>&lt;<span class="type">float</span>&gt;(hits) / <span class="built_in">static_cast</span>&lt;<span class="type">float</span>&gt;(at_bats);</span><br></pre></td></tr></tbody></table></figure>
+const_cast</li>
+<li>Used to cast away constness.<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">   <span class="type">const</span> <span class="type">int</span> i = <span class="number">100</span>;</span><br><span class="line">   <span class="type">const</span> <span class="type">int</span> *p = &amp;i;</span><br><span class="line">   <span class="type">int</span> *q = <span class="built_in">const_cast</span>&lt;<span class="type">int</span>*&gt;(p);</span><br><span class="line">   <span class="type">int</span> j = i;</span><br><span class="line"></span><br><span class="line">   cout &lt;&lt; i &lt;&lt; endl &lt;&lt; j&lt;&lt;endl </span><br><span class="line"> &lt;&lt; *p &lt;&lt; endl  &lt;&lt; *q &lt;&lt;endl;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>很坑，请按案例。</p>
+<p>Const 转为 非 const，</p>
+<p>（1）c语言中，const 默认解释为 常量或字面量，所以转后也无法修改；</p>
+<p>（2）解释为，编译生成一个temp可变量，给你修改</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">   <span class="type">const</span> <span class="type">int</span> i = <span class="number">100</span>;</span><br><span class="line">   <span class="type">const</span> <span class="type">int</span> &amp;p = i;</span><br><span class="line">   <span class="type">int</span> &amp;q = <span class="built_in">const_cast</span>&lt;<span class="type">int</span>&amp;&gt;(p);</span><br><span class="line">   <span class="type">int</span> j = i;</span><br><span class="line"></span><br><span class="line">   cout &lt;&lt; i &lt;&lt; endl &lt;&lt; j &lt;&lt; endl</span><br><span class="line"> &lt;&lt; p &lt;&lt; endl &lt;&lt; q &lt;&lt;endl;</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>reinterpret_cast</p>
+<ul>
+<li>converts between unrelated types such as an integer to a pointer or  a pointer to an unrelated pointer type.<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> *ip;</span><br><span class="line"><span class="type">char</span> *cp;</span><br><span class="line"><span class="type">void</span> *gp;</span><br><span class="line">cp=ip;   </span><br><span class="line">ip=cp;</span><br><span class="line">cp=gp;</span><br><span class="line">gp=cp;</span><br><span class="line">cp=<span class="built_in">reinterpret_cast</span>&lt;<span class="type">char</span>*&gt;(gp);</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>请打开代码中注释，编译去掉出错的语句，解释出错原因：</p>
+<p>（1）有类型指针间，不能隐式转换，除非向上转换;</p>
+<p>（2）有类型指针可隐式转为通用类型指针，反之不行；</p>
+<p>（3）其他需要显式转换，c++建议用 reinterpret 转指针</p>
+</blockquote>
+</li>
+</ul>
+<p>dynamic_cast</p>
+<ul>
+<li>Used for casting across or within inheritance.</li>
+<li>This cast is used with classes having <span style="color:orange">virtual functions</span>.</li>
+</ul>
+<h2 id="多重继承"><a href="#多重继承" class="headerlink" title="多重继承"></a>多重继承</h2><h3 id="C-支持的多继承"><a href="#C-支持的多继承" class="headerlink" title="C++支持的多继承"></a>C++支持的多继承</h3><p>多重继承：派生类继承多个基类</p>
+<ul>
+<li>代表概念：C既 is a A 又 is a B<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> 派生类名 : 继承控制<span class="number">1</span>, 基类名<span class="number">1</span>, 继承控制<span class="number">2</span>, 基类名<span class="number">2</span>, ... {</span><br><span class="line">  成员声名;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+重复继承：菱形继承</li>
+<li>多重继承特例，base A被派生两次以上</li>
+</ul>
+<p>举例——device</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">device1</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">device1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">volume</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">powerOn</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token function">device1</span><span class="token punctuation">(</span><span class="token keyword">int</span> vol<span class="token punctuation">,</span> <span class="token keyword">bool</span> onOrOff<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">volume</span><span class="token punctuation">(</span>vol<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">powerOn</span><span class="token punctuation">(</span>onOrOff<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">showVol</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Volume is "</span> <span class="token operator">&lt;&lt;</span> volume <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">protected</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> volume<span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> powerOn<span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">device2</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">device2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">talkTime</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">standByTime</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">power</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token function">device2</span><span class="token punctuation">(</span><span class="token keyword">int</span> newTalkTime<span class="token punctuation">,</span><span class="token keyword">int</span> newStandByTime<span class="token punctuation">,</span> <span class="token keyword">float</span> powerCent<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">talkTime</span><span class="token punctuation">(</span>newTalkTime<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">standByTime</span><span class="token punctuation">(</span>newStandByTime<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">power</span><span class="token punctuation">(</span>powerCent<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -287,6 +384,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="/2023/06/12/C-note-11/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          C++ note (11)
+        </a>
       
     </div>
     <div>

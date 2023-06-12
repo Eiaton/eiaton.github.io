@@ -27,7 +27,7 @@
 
 
 
-<title>How I solve the &#39;tag page is blank&#39; problem | Sleep With Me</title>
+<title>C++ note (11) | Sleep With Me</title>
 
 
 
@@ -169,7 +169,7 @@
         </h2>
       </a>
       <div id="header-title" class="opacity-0 md:ml-2 md:mt-[0.1rem] text-xs font-medium whitespace-nowrap overflow-hidden overflow-ellipsis">
-        How I solve the 'tag page is blank' problem
+        C++ note (11)
       </div>
       <div class="flex-1"></div>
       <div class="flex items-center gap-3">
@@ -246,55 +246,41 @@
   <header class="overflow-hidden pt-6 pb-6 md:pt-12">
     <div class="pt-4 md:pt-6">
       <h1 id="article-title" class="text-[2rem] font-bold leading-snug mb-4 md:mb-6 md:text-[2.6rem]">
-        How I solve the 'tag page is blank' problem
+        C++ note (11)
       </h1>
       <p class="mb-6">
         
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 20:44:57</time>
+          <time>2023-06-12 21:47:08</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
-          <span>203 words</span>
+          <span>52 words</span>
         </section>
       </div>
     </div>
   </header>
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
-    <h1 id="创建-tags-页面时遇到的问题"><a href="#创建-tags-页面时遇到的问题" class="headerlink" title="创建 tags 页面时遇到的问题"></a>创建 tags 页面时遇到的问题</h1><h2 id="正常流程"><a href="#正常流程" class="headerlink" title="正常流程"></a>正常流程</h2><ol>
-<li><code>$ hexo new page "tags"</code></li>
-<li>编辑 <code>index.md</code> :  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">type: tags</span><br><span class="line">layout: tags</span><br></pre></td></tr></tbody></table></figure></li>
-<li>编辑主题配置文件 <code>nav</code>:  <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nav:</span><br><span class="line">  Posts: /archives</span><br><span class="line">  Categories: </span><br><span class="line">  Tags: /tags         # 新增</span><br></pre></td></tr></tbody></table></figure></li>
-</ol>
-<h2 id="我的-tags-界面会"><a href="#我的-tags-界面会" class="headerlink" title="我的 tags 界面会"></a>我的 tags 界面会</h2><ul>
-<li>依旧显示 <code>Cannot GET /tags/</code></li>
-<li>正常打开但内容空白</li>
+    <ul>
+<li><a href="#%E5%A4%9A%E6%80%81-%E2%85%B0">多态 Ⅰ</a><ul>
+<li><a href="#%E8%99%9A%E5%87%BD%E6%95%B0%E5%8F%8A%E5%85%B6%E6%84%8F%E4%B9%89">虚函数及其意义</a></li>
+<li><a href="#%E5%A4%9A%E6%80%81%E7%9A%84%E6%A6%82%E5%BF%B5">多态的概念</a></li>
+<li><a href="#%E5%A4%9A%E6%80%81-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD">多态-函数重载</a></li>
+<li><a href="#%E5%A4%9A%E6%80%81-%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9E%8B">多态-动态模型</a></li>
 </ul>
-<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ol>
-<li>对于显示 <code>Cannot GET /tags/</code>，检查是否写了 <code>layout: tag</code> </li>
-<li>对于内容空白，查阅 <code>themes/maple/layout/tag.ejs</code>，发现作者写道：<blockquote>
-<hr>
-<p>this page will judge whether current page is ‘tag.’</p>
-<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tag/">http://localhost:4000/tag/</a>‘ return false.</p>
-<p>url:’<a target="_blank" rel="noopener" href="http://localhost:4000/tags/test/">http://localhost:4000/tags/test/</a>‘ return true.</p>
-<p>if you enter ‘tag’ page by click link will show all tags.</p>
-<p>otherwise if you enter ‘tags’ by click post header link will show the single tag of this post.</p>
-<h2 id="how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this"><a href="#how-to-add-a-tag-page-1-hexo-new-page-“tag”2-cd-source-x2F-tag-x2F-index-md3-add-layout-pattern-like-this" class="headerlink" title="how to add a tag page:1. hexo new page “tag”2. cd source/tag/index.md3. add layout pattern like this:"></a>how to add a tag page:<br>1. hexo new page “tag”<br>2. cd source/tag/index.md<br>3. add layout pattern like this:<br><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: tag</span><br><span class="line">date: 2019-06-09 09:56:49</span><br><span class="line">tag: tag</span><br><span class="line">layout: tag</span><br></pre></td></tr></tbody></table></figure></h2></blockquote>
 </li>
-</ol>
-<p>方知要将 <code>tags</code> 改作 <code>tag</code> </p>
-<p>对于 <code>category</code> 也是同理</p>
-
+</ul>
+<h1 id="多态-Ⅰ"><a href="#多态-Ⅰ" class="headerlink" title="多态 Ⅰ"></a>多态 Ⅰ</h1><h2 id="虚函数及其意义"><a href="#虚函数及其意义" class="headerlink" title="虚函数及其意义"></a>虚函数及其意义</h2><h2 id="多态的概念"><a href="#多态的概念" class="headerlink" title="多态的概念"></a>多态的概念</h2><h2 id="多态-函数重载"><a href="#多态-函数重载" class="headerlink" title="多态-函数重载"></a>多态-函数重载</h2><h2 id="多态-动态模型"><a href="#多态-动态模型" class="headerlink" title="多态-动态模型"></a>多态-动态模型</h2>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
     
       
         <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 m-1 text-sm rounded-md transition-colors hover:bg-gray-200">
-          <a href="/tags/HEXO/">HEXO</a>
+          <a href="/tags/C/">C++</a>
         </span>
       
     
@@ -303,16 +289,11 @@
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
       
-        <a href="/2023/05/28/C-note-5/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
-          C++ note (5)
-        </a>
-      
     </div>
     <div>
       
-        <a href="/2023/05/27/How-to-use-tags-plugin/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
-          How to use tags plugin
+        <a href="/2023/06/10/C-note-10/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          C++ note (10)
           <iconify-icon width="20" icon="ri:arrow-right-s-line" data-inline="false"></iconify-icon>
         </a>
       
