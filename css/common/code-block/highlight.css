@@ -442,3 +442,7 @@ pre .keyword,
 pre .javascript .function {
   color: var(--highlight-purple);
 }
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+code {
+  font-family: "Source Code Pro", consolas, Menlo, "JetBrains Mono";
+}

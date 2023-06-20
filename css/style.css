@@ -353,7 +353,7 @@ body {
   color: var(--text-color-3);
   font-weight: 400;
   font-size: 15.2px;
-  font-family: Optima-Regular, Optima, PingFang SC, Microsoft YaHei, sans-serif;
+  font-family: JetBrains Mono;
   line-height: 22px;
   letter-spacing: 0.2px;
   background: var(--background-color-1);
@@ -1223,6 +1223,10 @@ pre .coffeescript .title {
 pre .keyword,
 pre .javascript .function {
   color: var(--highlight-purple);
+}
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+code {
+  font-family: "Source Code Pro", consolas, Menlo, "JetBrains Mono";
 }
 .highlight-container {
   position: relative;
