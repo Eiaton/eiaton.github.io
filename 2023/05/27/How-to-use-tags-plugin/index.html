@@ -253,7 +253,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-29 21:12:28</time>
+          <time>2023-06-20 22:41:09</time>
           <span class="text-gray-400">·</span>
           <span>2 min</span>
           <span class="text-gray-400">·</span>
@@ -281,20 +281,21 @@
 <p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用escape选项，禁止对特殊字符进行转义。</p>
 <h2 id="嵌入图片"><a href="#嵌入图片" class="headerlink" title="嵌入图片"></a>嵌入图片</h2><p>自 hexo-renderer-marked 3.1.0 以后可以启用自动路径解析</p>
 <p>在 config.yml 内：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br><span class="line">marked:</span><br><span class="line">  prependRoot: true</span><br><span class="line">  postAsset: true</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
 <p>启用后，资源图片将会被自动解析为其对应文章的路径</p>
 <p>例如：</p>
 <p>image.jpg 位置为 /2020/01/02/foo/image.jpg ，这表示它是 /2020/01/02/foo/ 文章的一张资源图片， <code>![](image.jpg)</code> 将会被解析为 </p>
 <p><code>&lt;img src="/2020/01/02/foo/image.jpg"&gt;</code></p>
 <p>参见：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders">https://hexo.io/zh-cn/docs/asset-folders</a></p>
-<h3 id="默认（无选项）"><a href="#默认（无选项）" class="headerlink" title="默认（无选项）"></a>默认（无选项）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset_img foo.jpg %}</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src="/2020/01/02/hello/foo.jpg"&gt;</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="自定义-class-属性"><a href="#自定义-class-属性" class="headerlink" title="自定义 class 属性"></a>自定义 class 属性</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset_img post-image foo.jpg %}</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src="/2020/01/02/hello/foo.jpg" class="post-image"&gt;</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="展示尺寸"><a href="#展示尺寸" class="headerlink" title="展示尺寸"></a>展示尺寸</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset_img foo.jpg 500 400 %}</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src="/2020/01/02/hello/foo.jpg" width="500" height="400"&gt;</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="title-和-alt-属性"><a href="#title-和-alt-属性" class="headerlink" title="title 和 alt 属性"></a>title 和 alt 属性</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset_img logo.svg "lorem ipsum'dolor'" %}</span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src="/2020/01/02/hello/foo.jpg" title="lorem ipsum" alt="dolor"&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="默认（无选项）"><a href="#默认（无选项）" class="headerlink" title="默认（无选项）"></a>默认（无选项）</h3><figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset<span class="emphasis">_img foo.jpg %}</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/2020/01/02/hello/foo.jpg"</span>&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="自定义-class-属性"><a href="#自定义-class-属性" class="headerlink" title="自定义 class 属性"></a>自定义 class 属性</h3><figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset<span class="emphasis">_img post-image foo.jpg %}</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/2020/01/02/hello/foo.jpg"</span> <span class="attr">class</span>=<span class="string">"post-image"</span>&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="展示尺寸"><a href="#展示尺寸" class="headerlink" title="展示尺寸"></a>展示尺寸</h3><figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset<span class="emphasis">_img foo.jpg 500 400 %}</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/2020/01/02/hello/foo.jpg"</span> <span class="attr">width</span>=<span class="string">"500"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="title-和-alt-属性"><a href="#title-和-alt-属性" class="headerlink" title="title 和 alt 属性"></a>title 和 alt 属性</h3><figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset<span class="emphasis">_img logo.svg "lorem ipsum'dolor'" %}</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight md"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/2020/01/02/hello/foo.jpg"</span> <span class="attr">title</span>=<span class="string">"lorem ipsum"</span> <span class="attr">alt</span>=<span class="string">"dolor"</span>&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
