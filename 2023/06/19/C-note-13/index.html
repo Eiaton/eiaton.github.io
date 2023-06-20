@@ -253,11 +253,11 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-06-19 23:21:11</time>
+          <time>2023-06-20 21:31:39</time>
           <span class="text-gray-400">·</span>
-          <span>2 min</span>
+          <span>7 min</span>
           <span class="text-gray-400">·</span>
-          <span>586 words</span>
+          <span>2k words</span>
         </section>
       </div>
     </div>
@@ -273,9 +273,16 @@
 <li><a href="#%E4%B8%BE%E4%BE%8B">举例</a></li>
 <li><a href="#%E4%B8%80%E8%88%AC%E5%BD%A2%E5%BC%8F">一般形式</a></li>
 <li><a href="#%E5%AE%9E%E4%BE%8B%E5%8C%96instantiation">实例化(instantiation)</a></li>
+<li><a href="#%E6%98%BE%E7%A4%BA%E5%85%A8%E6%A8%A1%E6%9D%BF%E7%89%B9%E5%8C%96">显示（全）模板特化</a></li>
+<li><a href="#%E6%A8%A1%E6%9D%BF%E9%87%8D%E8%BD%BD">模板重载</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E7%A1%AE%E5%AE%9A%E8%B0%83%E7%94%A8%E5%93%AA%E4%B8%AA%E5%87%BD%E6%95%B0">如何确定调用哪个函数</a></li>
 </ul>
 </li>
-<li><a href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF">类模板</a></li>
+<li><a href="#%E7%B1%BB%E6%A8%A1%E6%9D%BF">类模板</a><ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F">定义方式</a></li>
+<li><a href="#%E7%A4%BA%E4%BE%8B%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%A0%88%E7%B1%BB%E6%A8%A1%E6%9D%BF">示例：链表实现的栈类模板</a></li>
+</ul>
+</li>
 <li><a href="#%E9%9D%9E%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF%E5%BD%A2%E5%8F%82">非类型模板形参</a></li>
 <li><a href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%BC%95%E7%94%A8">数组的引用</a></li>
 </ul>
@@ -321,7 +328,55 @@
 <ul>
 <li><span style="color:orange">typename</span> 模板形参1, <span style="color:orange">typename</span> 模板形参2, …</li>
 </ul>
-<h3 id="实例化-instantiation"><a href="#实例化-instantiation" class="headerlink" title="实例化(instantiation)"></a>实例化(instantiation)</h3><h2 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h2><h2 id="非类型模板形参"><a href="#非类型模板形参" class="headerlink" title="非类型模板形参"></a>非类型模板形参</h2><h2 id="数组的引用"><a href="#数组的引用" class="headerlink" title="数组的引用"></a>数组的引用</h2>
+<h3 id="实例化-instantiation"><a href="#实例化-instantiation" class="headerlink" title="实例化(instantiation)"></a>实例化(instantiation)</h3><p>函数模板的使用形式与普通函数调用相同。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">  <span class="function">std::string <span class="title">s1</span><span class="params">(<span class="string">"rabbit"</span>)</span>, <span class="title">s2</span><span class="params">(<span class="string">"bear"</span>)</span></span>;</span><br><span class="line">  <span class="type">int</span> iv1 = <span class="number">3</span>, iv2 = <span class="number">5</span>;</span><br><span class="line">  <span class="type">double</span> dv1 = <span class="number">2.8</span>, dv2 = <span class="number">8.5</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调用函数模板的实例swap(string&amp;, string&amp;)</span></span><br><span class="line">  <span class="built_in">swap</span>(s1, s2);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调用函数模板的实例swap(int&amp;, int&amp;)</span></span><br><span class="line">  <span class="built_in">swap</span>(iv1, iv2);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调用swap的实例swap(double&amp;, double&amp;)</span></span><br><span class="line">  <span class="built_in">swap</span>(dv1, dv2);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>调用函数模板的过程：</p>
+<ol>
+<li>模板实参推断（template argument deduction）：编译器根据函数调用中所给出的<strong>实参的类型</strong>，确定相应的<strong>模板实参</strong></li>
+<li>函数模板的实例化（instantiation）：模板实参确定之后，编译器就使用<strong>模板实参代替相应的模板形参</strong>，产生并编译函数模板的一个特定版本（称为函数模板的一个<em>实例</em>（instance））（注意：此过程中<span style="color:orange">不进行常规隐式类型转换</span>）</li>
+</ol>
+<h3 id="显示（全）模板特化"><a href="#显示（全）模板特化" class="headerlink" title="显示（全）模板特化"></a>显示（全）模板特化</h3><ul>
+<li>在模板当中有些特殊的类型，当想要针对特殊的类型进行一些特殊的操作，这时候就可以用模板的<span style="color:orange">特化</span></li>
+<li>在正常的模板下面接着编写代码，写一个空的template&lt;&gt;然后写个具体的函数代码来补充</li>
+<li>如实例所示，当传入的实参类型是int类型，就执行模板的<span style="color:orange">特化部分</span>，而非int类型执行正常的<span style="color:orange">模板推断</span><figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(T&amp; v1, T&amp; v2)</span> </span>{</span><br><span class="line">  T tmp;</span><br><span class="line">  tmp = v1;</span><br><span class="line">  v1  = v2;</span><br><span class="line">  v2  = tmp;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;&gt; <span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span>&amp; v1, <span class="type">int</span>&amp; v2)</span> </span>{</span><br><span class="line">    <span class="type">int</span> tmp;</span><br><span class="line">    tmp = v1;</span><br><span class="line">    v1  = v2;</span><br><span class="line">    v2  = tmp;</span><br><span class="line">    v1 += <span class="number">10</span>;</span><br><span class="line">    v2 += <span class="number">10</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
+</ul>
+<h3 id="模板重载"><a href="#模板重载" class="headerlink" title="模板重载"></a>模板重载</h3><p>对函数模板进行重载：</p>
+<ul>
+<li>定义名字相同而函数形参表不同的函数模板</li>
+<li>或者定义与函数模板同名的非模板函数(正常函数)，在其函数体中完成不同的行为</li>
+</ul>
+<p>编译器是如何确定调用的是这么多同名函数中的哪一个呢？</p>
+<h3 id="如何确定调用哪个函数"><a href="#如何确定调用哪个函数" class="headerlink" title="如何确定调用哪个函数"></a>如何确定调用哪个函数</h3><p>函数调用的静态绑定规则（重载协议）：</p>
+<ol>
+<li>如果某一同名非模板函数(指正常的函数)的形参类型正好与函数调用的实参类型匹配(完全一致)，则调用该函数。否则，进入第2步</li>
+<li>如果能从同名的函数模板实例化一个函数实例，而该函数实例的形参类型正好与函数调用的实参类型匹配(完全一致)，则调用该函数模板的实例函数。否则，进入第3步<br>在步骤2中：首先匹配函数模板的特化，在匹配非指定特殊的函数模板</li>
+<li>对函数调用的实参进行隐式类型转换后与非模板函数再次进行匹配，若能找到匹配的函数则调用该函数。否则，进入第4步</li>
+<li>提示编译错误<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数模板demoPrint</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">demoPrint</span><span class="params">(<span class="type">const</span> T v1, <span class="type">const</span> T v2)</span></span>{</span><br><span class="line">    cout &lt;&lt; <span class="string">"the first version of demoPrint()"</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">"the arguments: "</span> &lt;&lt; v1 &lt;&lt; <span class="string">" "</span> &lt;&lt; v2 &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 函数模板demoPrint的指定特殊</span></span><br><span class="line"><span class="keyword">template</span> &lt;&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">demoPrint</span><span class="params">(<span class="type">const</span> <span class="type">char</span> v1, <span class="type">const</span> <span class="type">char</span> v2)</span></span>{</span><br><span class="line">    cout &lt;&lt; <span class="string">"the specify special of demoPrint()"</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">"the arguments: "</span> &lt;&lt; v1 &lt;&lt; <span class="string">" "</span> &lt;&lt; v2 &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 函数模板demoPrint重载的函数模板</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">demoPrint</span><span class="params">(<span class="type">const</span> T v)</span></span>{</span><br><span class="line">    cout &lt;&lt; <span class="string">"the second version of demoPrint()"</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">"the argument: "</span> &lt;&lt; v &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 非函数模板demoPrint</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">demoPrint</span><span class="params">(<span class="type">const</span> <span class="type">double</span> v1, <span class="type">const</span> <span class="type">double</span> v2)</span></span>{</span><br><span class="line">    cout &lt;&lt; <span class="string">"the nonfunctional template version of demoPrint()"</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">"the arguments: "</span> &lt;&lt; v1 &lt;&lt; <span class="string">" "</span> &lt;&lt; v2 &lt;&lt; endl;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数调用 */</span></span><br><span class="line"><span class="function">string <span class="title">s1</span><span class="params">(<span class="string">"rabbit"</span>)</span>, <span class="title">s2</span><span class="params">(<span class="string">"bear"</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">char</span> <span class="title">c1</span><span class="params">(<span class="string">'k'</span>)</span>, <span class="title">c2</span><span class="params">(<span class="string">'b'</span>)</span></span>;</span><br><span class="line"><span class="type">int</span> iv1 = <span class="number">3</span>, iv2 = <span class="number">5</span>;</span><br><span class="line"><span class="type">double</span> dv1 = <span class="number">2.8</span>, dv2 = <span class="number">8.5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用第一个函数模板</span></span><br><span class="line"><span class="built_in">demoPrint</span>(iv1, iv2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用第一个函数模板的指定特殊</span></span><br><span class="line"><span class="built_in">demoPrint</span>(c1, c2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用第二个函数模板</span></span><br><span class="line"><span class="built_in">demoPrint</span>(iv1);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用非函数模板</span></span><br><span class="line"><span class="built_in">demoPrint</span>(dv1, dv2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 隐式转换后调用非函数模板</span></span><br><span class="line"><span class="built_in">demoPrint</span>(iv1, dv2);</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/* 结果 */</span><br><span class="line">the first version of demoPrint()</span><br><span class="line">the arguments: 3 5</span><br><span class="line">the specify special of demoPrint()</span><br><span class="line">the arguments: k b</span><br><span class="line">the second version of demoPrint()</span><br><span class="line">the argument: 3</span><br><span class="line">the nonfunctional template version of demoPrint()</span><br><span class="line">the arguments: 2.8 8.5</span><br><span class="line">the nonfunctional template version of demoPrint()</span><br><span class="line">the arguments: 3 8.5</span><br></pre></td></tr></tbody></table></figure></li>
+</ol>
+<h2 id="类模板"><a href="#类模板" class="headerlink" title="类模板"></a>类模板</h2><p><strong>使用情景</strong>：定义可以存放任意类型对象的通用容器类</p>
+<ul>
+<li>定义一个栈（stack）类，即可用于存放int型对象，又可用于存放float、double、string…甚至任意未知类型的元素</li>
+<li>定义一个队列（queue）类，即可用于存放int型对象，又可用于存放float、double、string…甚至任意未知类型的元素</li>
+</ul>
+<p><strong>实现方式</strong>：为类声明一种<strong>模板</strong>，使得类中的某些数据成员、某些成员函数的参数、某些成员函数的返回值，能取任意类型（包括基本类型和用户自定义类型）</p>
+<h3 id="定义方式"><a href="#定义方式" class="headerlink" title="定义方式"></a>定义方式</h3><p>类模板的一般形式：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;模板形参表&gt;</span><br><span class="line"><span class="keyword">class</span> 类模板名 {</span><br><span class="line">  类成员声明</span><br><span class="line">  ...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>在类模板外定义成员函数的一般形式：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;模板形参表&gt;</span><br><span class="line">返回值类型 类模板名&lt;模板形参名列表&gt;::函数名(函数形参表) {</span><br><span class="line">  函数实现</span><br><span class="line">  ...</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>其中模板形参表的形式为：template &lt;typename 类型参数1, typename 类型参数2, …&gt;</p>
+<p>（注：模板形参每项是非类型形参、类型形参、模板形参之一。）</p>
+</blockquote>
+<h3 id="示例：链表实现的栈类模板"><a href="#示例：链表实现的栈类模板" class="headerlink" title="示例：链表实现的栈类模板"></a>示例：链表实现的栈类模板</h3><pre class="mermaid">graph TD;
+    A--&gt;B;
+    A--&gt;C;
+    B--&gt;D;
+    C--&gt;D;</pre>
+<pre class="mermaid">graph BT
+    fafa-check--&gt;fafa-coffee--&gt;fafa;
+    fafa-check--&gt;fafa</pre>
+<h2 id="非类型模板形参"><a href="#非类型模板形参" class="headerlink" title="非类型模板形参"></a>非类型模板形参</h2><h2 id="数组的引用"><a href="#数组的引用" class="headerlink" title="数组的引用"></a>数组的引用</h2>
   </article>
   <!-- tag -->
   <div class="mt-12 pt-6 border-t border-gray-200">
@@ -336,6 +391,11 @@
   <!-- prev and next -->
   <div class="flex justify-between mt-12 pt-6 border-t border-gray-200">
     <div>
+      
+        <a href="/2023/06/20/Use-Mermaid-in-Hexo/" class="text-sm text-gray-400 hover:text-gray-500 flex justify-center">
+          <iconify-icon width="20" icon="ri:arrow-left-s-line" data-inline="false"></iconify-icon>
+          Use Mermaid in Hexo
+        </a>
       
     </div>
     <div>

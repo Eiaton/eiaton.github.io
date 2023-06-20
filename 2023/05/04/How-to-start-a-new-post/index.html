@@ -253,7 +253,7 @@
       </p>
       <div>
         <section class="flex items-center gap-3 text-sm">
-          <time>2023-05-28 04:26:17</time>
+          <time>2023-06-20 21:38:49</time>
           <span class="text-gray-400">·</span>
           <span>1 min</span>
           <span class="text-gray-400">·</span>
@@ -265,35 +265,35 @@
   <!-- content -->
   <article class="post-content mt-10 prose dark:prose-invert post-content">
     <h1 id="发布文章"><a href="#发布文章" class="headerlink" title="发布文章"></a>发布文章</h1><h2 id="发布在首页"><a href="#发布在首页" class="headerlink" title="发布在首页"></a>发布在首页</h2><p>进入 HEXO root dirction ，右键打开 GIT Bash Here<br>创建 new post ：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n "NAME"    # n: name</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">"NAME"</span>    <span class="comment"># n: name</span></span><br></pre></td></tr></tbody></table></figure>
 <p>会在 <code>source/_pots</code> 文件夹中生成 NAME.md 以及一个名为 NAME.md 的文件夹，可以在该文件夹中放入需要使用到的图片。</p>
 <p>图片插入方法可见：<a href="/2023/05/27/How-to-use-tags-plugin/" title="How to use tags plugin">How to use tags plugin</a></p>
-<h2 id="仅发布文章"><a href="#仅发布文章" class="headerlink" title="仅发布文章"></a>仅发布文章</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n page "NAME"</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="仅发布文章"><a href="#仅发布文章" class="headerlink" title="仅发布文章"></a>仅发布文章</h2><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n page <span class="string">"NAME"</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>会在 <code>source</code> 文件夹中生成 <code>NAME</code></li>
-<li>页面不会出现在首页文章列表和归档中，也不支持添加 <code>categories</code> 和 <code> tags</code> 。</li>
+<li>页面不会出现在首页文章列表和归档中，也不支持添加 <code>categories</code> 和 <code>tags</code> 。</li>
 </ul>
 <h1 id="渲染并部署"><a href="#渲染并部署" class="headerlink" title="渲染并部署"></a>渲染并部署</h1><p>运行以下代码来将 post 渲染并部署到 Github Pages 上：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g    # 生成页面  g: generate</span><br><span class="line">hexo d    # 部署发布  d: deploy</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g    <span class="comment"># 生成页面  g: generate</span></span><br><span class="line">hexo d    <span class="comment"># 部署发布  d: deploy</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>若修改并部署后没有效果，使用 <code>hexo clean</code> 清理缓存后重新部署。</li>
 </ul>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></tbody></table></figure>
 <p>清除缓存文件 <code>db.json</code> 和已生成的静态文件 <code>public</code>.</p>
 <h1 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h1><p>运行 <code>hexo g</code> 前可以先运行以下代码来获得网页预览效果：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s    # 启动本地服务器，用于预览主题  s: sever</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s    <span class="comment"># 启动本地服务器，用于预览主题  s: sever</span></span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可</li>
 <li>对 source 下的 _config.yml 的修改，需要重启本地服务器后才能预览效果</li>
 </ul>
 <h1 id="草稿"><a href="#草稿" class="headerlink" title="草稿"></a>草稿</h1><p>相当于私密 post </p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft "NAME"</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft <span class="string">"NAME"</span></span><br></pre></td></tr></tbody></table></figure>
 <p>会在 <code>source/_drafts</code> 目录下生成一个 NAME.md 文件，但不被显示在页面上，也访问不到其链接。</p>
 <p>如果想把某一篇文章移除显示，可以把它移动到 <code>_drafts</code> 目录中。</p>
 <ul>
-<li>运行以下代码来把草稿变成 post ：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish [layout] NAME</span><br></pre></td></tr></tbody></table></figure></li>
-<li>更改配置文件以强行预览草稿：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">render_drafts: true</span><br></pre></td></tr></tbody></table></figure></li>
-<li>或用以下方式打开服务器：<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --drafts</span><br></pre></td></tr></tbody></table></figure></li>
+<li>运行以下代码来把草稿变成 post ：<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish [layout] NAME</span><br></pre></td></tr></tbody></table></figure></li>
+<li>更改配置文件以强行预览草稿：<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">render_drafts: <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>或用以下方式打开服务器：<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --drafts</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 <h1 id="相关说明"><a href="#相关说明" class="headerlink" title="相关说明"></a>相关说明</h1><ul>
 <li>以上命令使用基于 Hexo 6.3.0</li>
