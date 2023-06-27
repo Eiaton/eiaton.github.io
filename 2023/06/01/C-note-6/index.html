@@ -191,7 +191,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-06-22 14:42:26</span>
+        <span class="pc">2023-06-27 19:41:18</span>
     </span>
     
     
@@ -241,30 +241,7 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <ul>
-<li><a href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD-%E2%85%B0">运算符重载 Ⅰ</a><ul>
-<li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li>
-<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
-<li><a href="#%E5%8F%AF%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6">可重载运算符</a></li>
-<li><a href="#%E4%B8%8D%E5%8F%AF%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6">不可重载运算符</a><ul>
-<li><a href="#%E5%85%B6%E4%BB%96%E9%99%90%E5%88%B6">其他<em>限制</em></a></li>
-</ul>
-</li>
-<li><a href="#%E5%8F%8C%E7%9B%AE%E5%8D%95%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E4%BE%8B%E5%AD%90">双目/单目运算符、成员函数重载例子</a></li>
-<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a><ul>
-<li><a href="#%E9%87%8D%E8%BD%BD%E8%87%AA%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6">重载自增运算符</a></li>
-<li><a href="#%E9%87%8D%E8%BD%BD%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6">重载赋值运算符</a></li>
-<li><a href="#%E9%87%8D%E8%BD%BD%E7%A7%BB%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6%E7%B1%BB%E5%A4%96%E5%AE%9A%E4%B9%89">重载移位运算符（类外定义）</a><ul>
-<li><a href="#%E5%B1%95%E5%BC%80%E8%AE%B2-2">展开讲 <strong>2</strong></a></li>
-<li><a href="#%E5%B1%95%E5%BC%80%E8%AE%B2-3">展开讲 <strong>3</strong></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="运算符重载-Ⅰ"><a href="#运算符重载-Ⅰ" class="headerlink" title="运算符重载 Ⅰ"></a>运算符重载 Ⅰ</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>C++为了增强代码的可读性引入了<span style="color:orange">运算符重载</span>，运算符重载是具有特殊函数名的函数，也具有<em>返回值类型，函数名</em>和<em>参数列表</em>。</p>
+                <h1 id="运算符重载-Ⅰ"><a href="#运算符重载-Ⅰ" class="headerlink" title="运算符重载 Ⅰ"></a>运算符重载 Ⅰ</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>C++为了增强代码的可读性引入了<span style="color:orange">运算符重载</span>，运算符重载是具有特殊函数名的函数，也具有<em>返回值类型，函数名</em>和<em>参数列表</em>。</p>
 <p>重载的运算符可以理解为<span style="color:orange;">带有特殊名称的函数</span>，函数名是由关键字 <code>operator</code> 和其后要重载的运算符符号构成的。</p>
 <p><code>opand1 op opand2 -&gt; op(opand1, opand2)</code></p>
 <p><code>A + B -&gt; operator + (A, B) -&gt; add(A, B)</code></p>

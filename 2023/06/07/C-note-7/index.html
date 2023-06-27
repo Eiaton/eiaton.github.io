@@ -191,7 +191,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-06-22 16:00:12</span>
+        <span class="pc">2023-06-27 19:41:38</span>
     </span>
     
     
@@ -241,34 +241,7 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <ul>
-<li><a href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD-%E2%85%B1">运算符重载 Ⅱ</a><ul>
-<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a><ul>
-<li><a href="#%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1">函数对象</a></li>
-</ul>
-</li>
-<li><a href="#%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0">友元函数</a><ul>
-<li><a href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5">问题引入</a></li>
-<li><a href="#%E6%A6%82%E5%BF%B5">概念</a></li>
-<li><a href="#%E5%8F%8B%E5%85%83%E7%B1%BB">友元类</a></li>
-</ul>
-</li>
-<li><a href="#%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD%E9%99%90%E5%AE%9A">操作符重载限定</a><ul>
-<li><a href="#%E5%BF%85%E9%A1%BB%E6%98%AF%E5%87%BD%E6%95%B0%E6%88%90%E5%91%98">必须是函数成员</a></li>
-</ul>
-</li>
-<li><a href="#%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2">隐式转换</a><ul>
-<li><a href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5-1">问题引入</a></li>
-<li><a href="#%E5%AF%B9%E8%B1%A1%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2">对象隐式转换</a></li>
-<li><a href="#%E9%87%8D%E8%BD%BD%E5%8D%8F%E8%AE%AE-const">重载协议-const</a></li>
-<li><a href="#nullptr">nullptr</a></li>
-<li><a href="#explicit">explicit</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="运算符重载-Ⅱ"><a href="#运算符重载-Ⅱ" class="headerlink" title="运算符重载 Ⅱ"></a>运算符重载 Ⅱ</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h3><p>当定义了 <code>operator()</code> 的类的对象调用此操作符时，其表现形式如同普通函数调用一般，故<strong>取名函数对象</strong>，举例：</p>
+                <h1 id="运算符重载-Ⅱ"><a href="#运算符重载-Ⅱ" class="headerlink" title="运算符重载 Ⅱ"></a>运算符重载 Ⅱ</h1><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="函数对象"><a href="#函数对象" class="headerlink" title="函数对象"></a>函数对象</h3><p>当定义了 <code>operator()</code> 的类的对象调用此操作符时，其表现形式如同普通函数调用一般，故<strong>取名函数对象</strong>，举例：</p>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">cmp</span> {</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span> <span class="params">()</span> <span class="params">(<span class="type">const</span> <span class="type">int</span>&amp; a, <span class="type">const</span> <span class="type">int</span>&amp; b)</span> </span>{</span><br><span class="line">      <span class="keyword">return</span> a &lt; b;</span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
 <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>{</span><br><span class="line">  cmp f;</span><br><span class="line">  cout &lt;&lt; <span class="built_in">f</span>(<span class="number">1</span>,<span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line">  <span class="keyword">return</span> (<span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>

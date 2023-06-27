@@ -302,26 +302,13 @@
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-模板
-泛型编程
-实例化
-函数模板(Function template)
-概念
-举例
-一般形式
-实例化(instantiation)
-显示（全）模板特化
-模板重载
-如何确定调用哪个函数
+                        模板泛型编程泛型编程（generic programming）
 
+独立于任何特定数据类型的编程，这使得不同类型的数据(对象)可以被相同的代码操作
 
-类模板
-定义方式
-示例：链表实现的栈类模板
+在 C++ 中，使用模板（template）来进行泛型编程，包括
 
-
-非类型模板形...
+函数模板（Function tem...
                     
                 </div>
 
@@ -329,8 +316,8 @@
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Tue Jun 20 2023 22:39:42 GMT+0800">
-                2023-06-20
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:46 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -384,20 +371,7 @@
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-多态 Ⅱ
-抽象类
-纯虚函数与抽象类
-
-
-虚析构
-RTTI运行时类型识别机制
-final 关键字（C++11）
-多态的实现原理
-
-
-
-多态 Ⅱ抽象类纯虚函数与抽象类虚析构RTTI运行时类型识别机制final 关键字（C++11）多态的实现原理
+                        多态 Ⅱ抽象类纯虚函数与抽象类虚析构RTTI运行时类型识别机制final 关键字（C++11）多态的实现原理
                     
                 </div>
 
@@ -405,8 +379,8 @@ final 关键字（C++11）
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Mon Jun 19 2023 21:37:27 GMT+0800">
-                2023-06-19
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:42 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -460,32 +434,11 @@ final 关键字（C++11）
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-多态 Ⅰ
-虚函数及其意义
-概念
-意义
-Override and Overwrite
+                        多态 Ⅰ虚函数及其意义概念虚函数是一个类的成员函数，前面有关键字 virtual
 
+作用：在公有继承层次中的一个或多个派生类中对虚函数进行重定义。当派生类的对象使用它基类的指针（或引用）调用虚函数时，将调用该对象的成员函数。
 
-多态的概念
-概念
-满足多态定义的标识符
-
-
-
-
-多态-函数重载
-多态-动态模型
-静态类型与动态类型
-静态类型——静态绑定
-动态类型——动态绑定
-
-
-
-
-
-多态 ...
+“一旦为虚，永远为虚”...
                     
                 </div>
 
@@ -493,8 +446,8 @@ Override and Overwrite
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Mon Jun 19 2023 20:16:27 GMT+0800">
-                2023-06-19
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:33 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -548,29 +501,12 @@ Override and Overwrite
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-继承和派生 Ⅲ
-类型兼容性
-举例
+                        继承和派生 Ⅲ类型兼容性赋值运算的类型兼容性
 
+可以将后代类的对象赋值给祖先类对象，反之不可。
 
-类的类型转换
-Upcasting and Downcasting
-Dynamic Casting
-Casts
-
-
-多重继承
-C++支持的多继承
-虚基类
-
-
-
-
-
-继承和派生 Ⅲ类型兼容性赋值运算的类型兼容性
-
-...
+每个派生类对象包含一个基类部分，这意味着可以将派生类对象当作基类对象使用。
+123456     ---------    ---------     ...
                     
                 </div>
 
@@ -578,8 +514,8 @@ C++支持的多继承
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Mon Jun 19 2023 19:59:57 GMT+0800">
-                2023-06-19
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:57 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -633,26 +569,10 @@ C++支持的多继承
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-继承和派生 Ⅱ
-派生与构造函数
-类不可继承的成员
-向基类构造函数传递实参
+                        继承和派生 Ⅱ派生与构造函数类不可继承的成员类不可继承的成员有
 
-
-派生与成员函数
-概念
-重载和隐藏的区别
-隐藏的应用
-存储结构
-
-
-改变访问控制
-恢复访问控制方式
-屏蔽基类成员
-用于继承对象的重命名
-使用基类构造函数
-继承机制的应用举例...
+私有成员
+构造函数与析构函数123456789101112131415class MyString : public std::string {  public:    MyStrin...
                     
                 </div>
 
@@ -660,8 +580,8 @@ C++支持的多继承
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Sat Jun 24 2023 20:56:14 GMT+0800">
-                2023-06-24
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:51 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -715,29 +635,7 @@ C++支持的多继承
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-继承和派生 Ⅰ
-继承/派生
-概念
-提出继承/派生概念的原因
-图解
-
-
-语法与访问控制
-继承关系语法
-继承中的访问控制
-派生类对象的存储
-
-
-构造与析构顺序
-继承时的构造函数
-继承时的析构函数
-
-
-
-
-
-继承和派生 Ⅰ继承/派生概念派生类(deriv...
+                        继承和派生 Ⅰ继承/派生概念派生类(derived class)是通过对基类(base class)进行扩充和修改得到的。基类的所有成员自动成为派生类的成员。在基类中除了自己定义的成员之外，还自动包括了派生类中定义的数据成员与成员函数，这些自动继承下...
                     
                 </div>
 
@@ -745,8 +643,8 @@ C++支持的多继承
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 22 2023 17:01:20 GMT+0800">
-                2023-06-22
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:42:13 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -800,34 +698,8 @@ C++支持的多继承
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-运算符重载 Ⅱ
-注意事项
-函数对象
-
-
-友元函数
-问题引入
-概念
-友元类
-
-
-操作符重载限定
-必须是函数成员
-
-
-隐式转换
-问题引入
-对象隐式转换
-重载协议-const
-nullptr
-explicit
-
-
-
-
-
-运算符重载 Ⅱ注意事项函数对象当定...
+                        运算符重载 Ⅱ注意事项函数对象当定义了 operator() 的类的对象调用此操作符时，其表现形式如同普通函数调用一般，故取名函数对象，举例：
+123456class cmp {  public:    bool operator () (const...
                     
                 </div>
 
@@ -835,8 +707,8 @@ explicit
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 22 2023 16:00:12 GMT+0800">
-                2023-06-22
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:38 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -941,30 +813,9 @@ explicit
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-运算符重载 Ⅰ
-概念
-方法
-可重载运算符
-不可重载运算符
-其他限制
-
-
-双目/单目运算符、成员函数重载例子
-注意事项
-重载自增运算符
-重载赋值运算符
-重载移位运算符（类外定义）
-展开讲 2
-展开讲 3
-
-
-
-
-
-
-
-运算符重载 Ⅰ概念C++为了增强...
+                        运算符重载 Ⅰ概念C++为了增强代码的可读性引入了运算符重载，运算符重载是具有特殊函数名的函数，也具有返回值类型，函数名和参数列表。
+重载的运算符可以理解为带有特殊名称的函数，函数名是由关键字 operator 和其后要重载的运算符符号构成的。
+op...
                     
                 </div>
 
@@ -972,8 +823,8 @@ explicit
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 22 2023 14:42:26 GMT+0800">
-                2023-06-22
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:18 GMT+0800">
+                2023-06-27
             </span>
         </span>
         

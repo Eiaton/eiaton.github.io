@@ -191,7 +191,7 @@
     
         <span class="article-update-date article-meta-item">
         <i class="fas fa-file-pen"></i>&nbsp;
-        <span class="pc">2023-06-01 22:10:35</span>
+        <span class="pc">2023-06-27 19:41:10</span>
     </span>
     
     
@@ -241,51 +241,31 @@
             <div class="article-content keep-markdown-body">
                 
 
-                <ul>
-<li><a href="#%E6%95%B0%E6%8D%AE%E6%8A%BD%E8%B1%A1%E5%92%8C%E7%B1%BB-%E2%85%B2">数据抽象和类 Ⅲ</a><ul>
-<li><a href="#%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E5%92%8C%E7%B1%BB">动态内存和类</a><ul>
-<li><a href="#cc-%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E5%88%86%E5%B8%83"><code>C/C++</code> 内存空间分布</a></li>
-<li><a href="#%E5%A0%86-%E6%A0%88-%E7%9A%84%E6%80%A7%E8%83%BD%E5%8C%BA%E5%88%AB"><code>堆 栈</code> 的性能区别</a></li>
-<li><a href="#%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA%E7%9A%84%E6%84%8F%E4%B9%89">内存分区的意义</a></li>
-</ul>
-</li>
-<li><a href="#c-%E5%8A%A8%E6%80%81%E5%8F%98%E9%87%8F%E5%AF%B9%E8%B1%A1%E7%AE%A1%E7%90%86"><code>C</code> 动态变量（对象）管理</a><ul>
-<li><a href="#%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E5%A0%86%E7%A9%BA%E9%97%B4">正确使用堆空间</a></li>
-</ul>
-</li>
-<li><a href="#new-%E5%92%8C-delete-%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F--default"><code>new</code> 和 <code>delete</code> 、动态创建变量/数组、内存泄漏、 <code>= default</code></a></li>
-</ul>
-</li>
-</ul>
-<h1 id="数据抽象和类-Ⅲ"><a href="#数据抽象和类-Ⅲ" class="headerlink" title="数据抽象和类 Ⅲ"></a>数据抽象和类 Ⅲ</h1><h2 id="动态内存和类"><a href="#动态内存和类" class="headerlink" title="动态内存和类"></a>动态内存和类</h2><h3 id="C-C-内存空间分布"><a href="#C-C-内存空间分布" class="headerlink" title="C/C++ 内存空间分布"></a><code>C/C++</code> 内存空间分布</h3><ul>
+                <h1 id="数据抽象和类-Ⅲ"><a href="#数据抽象和类-Ⅲ" class="headerlink" title="数据抽象和类 Ⅲ"></a>数据抽象和类 Ⅲ</h1><h2 id="动态内存和类"><a href="#动态内存和类" class="headerlink" title="动态内存和类"></a>动态内存和类</h2><h3 id="C-C-内存空间分布"><a href="#C-C-内存空间分布" class="headerlink" title="C/C++ 内存空间分布"></a><code>C/C++</code> 内存空间分布</h3><ul>
 <li><p>内存分区</p>
 <p><img src="/2023/05/27/C-note-4/mem.jpg" alt="memory"></p>
 </li>
 </ul>
 <ol>
-<li><code>Text</code>–只读、共享，操作系统管理</li>
-</ol>
+<li><p><code>Text</code>–只读、共享，操作系统管理</p>
 <ul>
 <li><p>是对象文件或内存中程序的一部分，其中包含可执行指令（函数实现，库实现，字符串等资源）。文本段在堆栈的下面，是防止堆栈溢出覆盖它。</p>
 </li>
 <li><p>通常代码段是共享的，对于经常执行的程序，只有一个副本需要存储在内存中；代码段是<strong>只读</strong>的，以防止程序以外修改指令。</p>
 </li>
 </ul>
-<ol start="2">
-<li><code>Initialized data</code></li>
-</ol>
+</li>
+<li><p><code>Initialized data</code></p>
 <ul>
 <li>通常称为<em>数据段</em>，是程序的虚拟地址空间的一部分，它包含程序员初始化的<strong>全局变量</strong>和<strong>静态变量</strong>以及<strong>常量</strong>，可以进一步划分为<em>只读区域</em>和<em>读写区域</em>。</li>
 </ul>
-<ol start="3">
-<li><code>Unintialized data</code>–内核初始化为<code>0</code></li>
-</ol>
+</li>
+<li><p><code>Unintialized data</code>–内核初始化为<code>0</code></p>
 <ul>
 <li>通常称为 <code>bss</code> 段</li>
 </ul>
-<ol start="4">
-<li><code>Heap</code>–程序员管理</li>
-</ol>
+</li>
+<li><p><code>Heap</code>–程序员管理</p>
 <ul>
 <li><p>堆是<strong>动态内存分配</strong>通常发生的部分（动态变量（对象））</p>
 </li>
@@ -294,19 +274,20 @@
 <li><p>堆是由<em><strong>程序员自己分配</strong></em>的，或程序结束后由操作系统自动回收。堆区域由所有共享库和进程中动态加载的模块共享。（<code>malloc</code>和<code>new</code>从堆区分配内存）</p>
 </li>
 </ul>
-<ol start="5">
-<li><code>Stack</code>–编译器分配管理</li>
-</ol>
+</li>
+<li><p><code>Stack</code>–编译器分配管理</p>
 <ul>
 <li><p>栈是存放<strong>自动变量</strong>，以及<strong>函数调用时保存的信息</strong>的部分（自动变量（对象）、函数参数）</p>
 </li>
 <li><p>每当进行函数调用时，函数的实参和返回地址以及调用者的上下文环境会被存放在栈中；栈区由编译器自动分配，从高地址向低地址扩展。</p>
 </li>
 <li><p>在函数调用时，第一个进栈的是主函数中后的下一条指令（函数调用语句的下一条可执行语句）的地址，然后是函数的各个参数，在大多数的<code>C</code>编译器中，参数是由右往左入栈的，然后是函数中的局部变量。<em><strong>静态变量是不入栈的</strong></em>。当本次函数调用结束后，<strong>局部变量先出栈，然后是参数</strong>，最后栈顶指针指向最开始存的地址，也就是主函数中的下一条指令，程序由该点继续运行。</p>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *s1 = <span class="string">"Literal"</span>; &nbsp;<span class="comment">// 文字在代码区，仅分配了字符指针</span></span><br><span class="line"><span class="comment">// s1[0] = 'I'; &nbsp;      // Segmentation fault </span></span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> s2[] = <span class="string">"Initial Literal"</span>; <span class="comment">// 分配数组空间</span></span><br></pre></td></tr></tbody></table></figure>
-<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptr_type* ptr_name = &amp;((ptr_type){<span class="number">2</span>,<span class="number">3</span>}); <span class="comment">// 分配结构空间及指针</span></span><br></pre></td></tr></tbody></table></figure></li>
+ <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> *s1 = <span class="string">"Literal"</span>; &nbsp;<span class="comment">// 文字在代码区，仅分配了字符指针</span></span><br><span class="line"><span class="comment">// s1[0] = 'I'; &nbsp;      // Segmentation fault </span></span><br></pre></td></tr></tbody></table></figure>
+ <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> s2[] = <span class="string">"Initial Literal"</span>; <span class="comment">// 分配数组空间</span></span><br></pre></td></tr></tbody></table></figure>
+ <figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptr_type* ptr_name = &amp;((ptr_type){<span class="number">2</span>,<span class="number">3</span>}); <span class="comment">// 分配结构空间及指针</span></span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
+</li>
+</ol>
 <h3 id="堆-栈-的性能区别"><a href="#堆-栈-的性能区别" class="headerlink" title="堆 栈 的性能区别"></a><code>堆 栈</code> 的性能区别</h3><ul>
 <li><p>写入方面：<strong>入栈</strong>比在堆上分配内存要<strong>快</strong>，因为入栈时操作系统<strong>无需分配新的空间</strong>，只需要将新数据放入栈顶即可。相比之下，在堆上分配内存则需要更多的工作，这是因为操作系统必须首先找到一块足够存放数据的内存空间，接着做一些记录为下一次分配做准备。</p>
 </li>
@@ -324,6 +305,7 @@
 <li><code>free</code> 后<em>再使用或释放指针</em>，行为不可预测。<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> { <span class="type">int</span> x; <span class="type">int</span> y; } Point;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span>{</span><br><span class="line">  <span class="comment">// 分配变量或一维可变数组</span></span><br><span class="line">  Point* p1 = <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(Point) * <span class="number">10</span>);</span><br><span class="line">&nbsp; <span class="comment">// 分配二维数组(n,m是常数)</span></span><br><span class="line">&nbsp; <span class="built_in">point</span> (*p2)[<span class="number">2</span>][<span class="number">3</span>] = <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(Point) * <span class="number">6</span>);</span><br><span class="line">&nbsp; <span class="comment">// 分配数组的数组</span></span><br><span class="line">&nbsp; <span class="type">int</span> n = <span class="number">2</span>;</span><br><span class="line">  <span class="type">int</span> m = <span class="number">3</span>;</span><br><span class="line">&nbsp; Point **p3 = <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(Point *) * n);</span><br><span class="line">&nbsp; <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">&nbsp;   p3[i] = <span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(Point) * m);</span><br><span class="line">&nbsp; }</span><br><span class="line">&nbsp; <span class="comment">// do somesthing</span></span><br><span class="line">&nbsp; <span class="built_in">free</span>(p1);</span><br><span class="line">&nbsp; <span class="built_in">free</span>(p2);</span><br><span class="line">&nbsp; <span class="comment">// 必须先释放行数组</span></span><br><span class="line">&nbsp; <span class="keyword">for</span> (<span class="type">size_t</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">  <span class="built_in">free</span>(p3[i]);</span><br><span class="line">  }</span><br><span class="line">&nbsp; <span class="built_in">free</span>(p3);</span><br><span class="line">&nbsp; <span class="keyword">return</span> (<span class="number">0</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 <h2 id="new-和-delete-、动态创建变量-x2F-数组、内存泄漏、-default"><a href="#new-和-delete-、动态创建变量-x2F-数组、内存泄漏、-default" class="headerlink" title="new 和 delete 、动态创建变量/数组、内存泄漏、 = default"></a><code>new</code> 和 <code>delete</code> 、动态创建变量/数组、内存泄漏、 <code>= default</code></h2><a href="/2023/05/10/C-note/" title="C++ note (1)">C++ note (1)</a>
+
             </div>
 
             

@@ -181,8 +181,8 @@
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 01 2023 22:10:45 GMT+0800">
-                2023-06-01
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:37:57 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -236,23 +236,10 @@
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-数据抽象和类 Ⅳ
-对象成员初始化
-非静态数据成员初始化方法：
-为什么需要初始化器列表和默认成员初始化器？
-语法
-要点
-必须使用初始化器列表的时候
-成员变量声明的顺序
-示例
-练习
-
-
-
-
-对象的内存布局
-C++内存格局见 {post_link C-n...
+                        数据抽象和类 Ⅳ对象成员初始化非静态数据成员初始化方法：
+在构造函数的成员 初始化器列表 中。（C++11）
+通过 默认成员初始化器 ，它是成员声明中包含的 花括号 或 等号 初始化器。（C++11）
+构造函数体内进行赋值操作。（不要构造成员，除非特...
                     
                 </div>
 
@@ -260,8 +247,8 @@ C++内存格局见 {post_link C-n...
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Tue Jun 06 2023 21:04:00 GMT+0800">
-                2023-06-06
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:26 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -411,23 +398,17 @@ $ hexo new page "tags"
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-数据抽象和类 Ⅲ
-动态内存和类
-C/C++ 内存空间分布
-堆 栈 的性能区别
-内存分区的意义
-
-
-C 动态变量（对象）管理
-正确使用堆空间
-
-
-new 和 delete 、动态创建变量/数组、内存泄漏、 = default
+                        数据抽象和类 Ⅲ动态内存和类C/C++ 内存空间分布
+内存分区
 
 
 
-数据抽象和类 Ⅲ动...
+
+Text–只读、共享，操作系统管理
+
+是对象文件或内存中程序的一部分，其中包含可执行指令（函数实现，库实现，字符串等资源）。文本段在堆栈的下面，是防止堆栈溢出覆盖它。
+
+通常代码...
                     
                 </div>
 
@@ -435,8 +416,8 @@ new 和 delete 、动态创建变量/数组、内存泄漏、 = default
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 01 2023 22:10:35 GMT+0800">
-                2023-06-01
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:41:10 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -490,32 +471,14 @@ new 和 delete 、动态创建变量/数组、内存泄漏、 = default
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-数据抽象和类 Ⅱ
-C++ 新增
-新类型：bool
-形参：void
+                        数据抽象和类 ⅡC++ 新增新类型：boolC ：
 
+没有 bool 类型12#define true = 1#define false = 0
+C99 定义了 _Bool 类型，并通过 stdbool.h 实现与 C++ 兼容
 
-新特性
-函数重载
-auto 用于函数重载
-默认实参
-字符串类型：string
+C++：
 
-
-访问控制
-公有成员
-私有成员
-
-
-构造/析构
-无参构造函数
-含参构造函数
-析构函数
-
-
-this...
+定义了...
                     
                 </div>
 
@@ -523,8 +486,8 @@ this...
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 01 2023 22:10:33 GMT+0800">
-                2023-06-01
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:40:12 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -578,35 +541,8 @@ this...
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-数据抽象和类 Ⅰ
-基本概念
-抽象
-抽象数据类型
-抽象数据类型转化
-
-
-
-
-结构体 类 对象
-C 中的结构体
-C++ 对象&amp;类
-类的示例
-结构体 v.s. 类
-对象
-
-
-成员函数
-预处理命令
-类的静态成员
-
-
-
-
-
-
-
-数据抽象和类 Ⅰ基本概...
+                        数据抽象和类 Ⅰ基本概念抽象Data Abstraction:只关心该数据“是什么”“如何使用”，而不关心其如何运作。Control Abstraction:只关心该行为能实现什么，而不关心其具体实现方法。
+抽象数据类型在程序中，称被抽象的数据，为抽...
                     
                 </div>
 
@@ -614,8 +550,8 @@ C++ 对象&amp;类
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 01 2023 22:10:31 GMT+0800">
-                2023-06-01
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:39:59 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
@@ -669,17 +605,9 @@ C++ 对象&amp;类
 
                 <div class="home-article-content keep-markdown-body">
                     
-                        
-new 和 delete 、动态创建变量/数组、内存泄漏、 = default
-new 和 delete 关键字
-new 总结
-delete 总结：
-
-
-动态创建变量/数组
-动态创建一个整型变量
-动态创建一个整型数组
-动态创建一个 string 数...
+                        new 和 delete 、动态创建变量/数组、内存泄漏、 = defaultnew 和 delete 关键字new 总结
+ptr_type* ptr_name = new ptr_type; // 动态创建一个对象
+ptr_type* ptr_na...
                     
                 </div>
 
@@ -687,8 +615,8 @@ delete 总结：
     <div class="home-article-meta-info">
         <span>
             <i class="fas fa-history"></i>&nbsp;
-            <span class="home-article-date" data-updated="Thu Jun 01 2023 22:10:28 GMT+0800">
-                2023-06-01
+            <span class="home-article-date" data-updated="Tue Jun 27 2023 19:39:52 GMT+0800">
+                2023-06-27
             </span>
         </span>
         
